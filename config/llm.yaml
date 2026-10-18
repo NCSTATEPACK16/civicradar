@@ -1,0 +1,44 @@
+# LLM settings. Model IDs and prices live here only — never in code.
+provider: anthropic
+
+models:
+  default: claude-haiku-5-5
+  escalation: claude-sonnet-5-5
+
+# Haiku 5.5 bills 5x more per token once a request exceeds 100K input tokens,
+# so every request is kept under this ceiling (checked with count_tokens).
+maxInputTokens: 95000
+maxOutputTokens: 16000
+maxPagesPerChunk: 25
+# Packets longer than this use the two-pass flow (triage the agenda, then extract relevant pages).
+twoPassAbovePages: 100
+triagePages: 15
+# A page with fewer non-whitespace characters than this is treated as image-only.
+imageOnlyCharThreshold: 20
+
+effort:
+  default: low
+  escalation: medium
+
+escalation:
+  # Re-run a chunk on the escalation model when any item is below this confidence...
+  confidenceBelow: 0.6
+  # ...or below this when the chunk contained image-only pages.
+  imageOnlyConfidenceBelow: 0.75
+
+# USD per million tokens (Anthropic rate card, cached 2026-10-06; confirm before launch).
+# longContext applies when a request's input exceeds longContextThreshold tokens.
+# Cache writes bill at 1.25x input, cache reads at 0.1x input. Batch = 50% off everything.
+pricing:
+  batchDiscount: 0.5
+  cacheWriteMultiplier: 1.25
+  cacheReadMultiplier: 0.1
+  models:
+    claude-haiku-5-5:
+      input: 0.10
+      output: 0.50
+      longContextThreshold: 100000
+      longContext: { input: 0.50, output: 2.50 }
+    claude-sonnet-5-5:
+      input: 2.00
+      output: 10.00

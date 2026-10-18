@@ -75,3 +75,6 @@ Not in Phase 1: frontend, geocoding, GitHub Actions (all Phase 2).
 
 ## Secrets (env)
 `ANTHROPIC_API_KEY`, optionally `LEGISTAR_TOKEN`. Phase 2 adds `SUPABASE_URL` and `SUPABASE_SERVICE_ROLE_KEY`.
+
+## Cloud dev sessions
+Node's built-in `fetch` ignores `HTTPS_PROXY`. In Claude Code cloud sessions, run network commands with `NODE_USE_ENV_PROXY=1`, for example `NODE_USE_ENV_PROXY=1 npm run ingest -- --dry-run`. This isn't needed locally or in GitHub Actions.

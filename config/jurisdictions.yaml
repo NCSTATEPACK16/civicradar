@@ -1,0 +1,27 @@
+# One entry per public body. New bodies on an existing platform are added here, not in code.
+# adapter: name registered in src/adapters/registry.ts
+jurisdictions:
+  - id: fuquay-varina-boc
+    municipality: Fuquay-Varina
+    body: Board of Commissioners
+    adapter: civicplus_agendacenter
+    options:
+      baseUrl: https://www.fuquay-varina.org
+      # AgendaCenter category name as shown on /AgendaCenter (matched case-insensitively).
+      category: Board of Commissioners
+
+  - id: fuquay-varina-planning
+    municipality: Fuquay-Varina
+    body: Planning Board
+    adapter: civicplus_agendacenter
+    options:
+      baseUrl: https://www.fuquay-varina.org
+      category: Planning Board
+
+  - id: wake-county-boc
+    municipality: Wake County
+    body: Board of Commissioners
+    adapter: legistar
+    options:
+      client: wake
+      bodyId: 138

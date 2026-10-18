@@ -1,0 +1,30 @@
+{
+  "name": "civicradar",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "ingest": "tsx src/pipeline/ingest.ts",
+    "eval": "tsx eval/run.ts",
+    "schema:export": "tsx src/schema/export.ts",
+    "eval:add": "tsx eval/add-fixture.ts"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.135.0",
+    "cheerio": "^1.2.0",
+    "pdf-lib": "^1.17.1",
+    "yaml": "^2.9.1",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.5",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2",
+    "vitest": "^5.0.5"
+  }
+}

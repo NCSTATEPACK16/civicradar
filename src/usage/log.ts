@@ -12,7 +12,11 @@ export interface UsageRecord {
   output_tokens: number;
   cache_creation_input_tokens: number;
   cache_read_input_tokens: number;
+  /** Actually billed (0 when running on a subscription plan). */
   cost_usd: number;
+  /** Same tokens priced at API list rates, for budgeting a later move to the API. */
+  list_cost_usd: number;
+  provider: string;
   escalated: boolean;
 }
 

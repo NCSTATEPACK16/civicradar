@@ -1,5 +1,9 @@
 # LLM settings. Model IDs and prices live here only — never in code.
-provider: anthropic
+# anthropic:   Anthropic API, pay per token (needs ANTHROPIC_API_KEY; supports --batch).
+# claude-code: headless Claude Code (`claude -p`) on the signed-in Claude subscription; no
+#              per-token charge, sync only, token counts estimated locally. Set CLAUDE_BIN if
+#              `claude` isn't on PATH.
+provider: claude-code
 
 models:
   default: claude-haiku-5-5

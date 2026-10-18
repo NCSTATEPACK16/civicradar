@@ -60,9 +60,14 @@ export async function extract(
   opts: { mode?: RunMode } = {},
 ): Promise<ExtractResult[]> {
   const mode = opts.mode ?? "sync";
+  if (mode === "batch" && !provider.supportsBatch) {
+    throw new Error(`provider "${provider.name}" does not support batch mode; run without --batch or switch provider`);
+  }
   const results: ExtractResult[] = inputs.map((i) => ({ meta: i.meta, actions: [], usage: [], warnings: [], costUsd: 0 }));
   const record = (doc: number, label: string, purpose: UsageRecord["purpose"], res: LlmResponse, escalated: boolean) => {
-    const cost = computeCost(res.model, res.usage, cfg.pricing, mode === "batch");
+    // list_cost_usd is what the tokens would cost at API rates; cost_usd is what was actually billed.
+    const listCost = computeCost(res.model, res.usage, cfg.pricing, mode === "batch");
+    const cost = res.billedUsd ?? listCost;
     results[doc]!.usage.push({
       ts: new Date().toISOString(),
       docId: inputs[doc]!.meta.docId,
@@ -75,6 +80,8 @@ export async function extract(
       cache_creation_input_tokens: res.usage.cache_creation_input_tokens ?? 0,
       cache_read_input_tokens: res.usage.cache_read_input_tokens ?? 0,
       cost_usd: cost,
+      list_cost_usd: listCost,
+      provider: provider.name,
       escalated,
     });
     if (res.error) results[doc]!.warnings.push(`${label}: ${res.error}`);

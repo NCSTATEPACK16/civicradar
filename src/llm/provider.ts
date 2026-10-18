@@ -23,6 +23,8 @@ export interface LlmResponse {
   /** True when the model finished normally (not truncated, refused, or errored). */
   complete: boolean;
   usage: TokenUsage;
+  /** Set by providers that don't bill per token (e.g. a subscription plan): actual extra charge. */
+  billedUsd?: number;
   error?: string;
 }
 
@@ -31,6 +33,7 @@ export type RunMode = "sync" | "batch";
 /** Everything provider-specific lives behind this interface. */
 export interface LlmProvider {
   readonly name: string;
+  readonly supportsBatch: boolean;
   countTokens(req: LlmRequest): Promise<number>;
   run(reqs: LlmRequest[], mode: RunMode): Promise<LlmResponse[]>;
 }

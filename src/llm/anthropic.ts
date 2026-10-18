@@ -15,6 +15,7 @@ export interface AnthropicProviderOptions {
 /** Claude via the Anthropic Messages API (sync) or Message Batches API (batch, 50% off). */
 export class AnthropicProvider implements LlmProvider {
   readonly name = "anthropic";
+  readonly supportsBatch = true;
   private clientInstance: Anthropic | undefined;
   private readonly concurrency: number;
   private readonly batchPollMs: number;

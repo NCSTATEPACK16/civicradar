@@ -14,7 +14,9 @@ Wake County, NC civic data pipeline. It ingests meeting agendas, packets and min
   - Split anything over ~25 pages.
   - Call the token-counting endpoint (`messages.countTokens`) before every send. Split again if the count is over the limit (default 95K).
 - **The weekly run uses the Message Batches API** (50% off). Sync calls are for small runs and evals.
-- **All LLM access goes through one `extract()` interface** (`src/llm/extract.ts`). Provider-specific code stays in its own module, such as `src/llm/anthropic.ts`.
+- **All LLM access goes through one `extract()` interface** (`src/llm/extract.ts`). Provider-specific code stays in its own module. `provider` in `config/llm.yaml` picks one:
+  - `claude-code` (current default for Phase 1 testing): runs headless Claude Code (`claude -p`) on the owner's Claude subscription. No per-token charge; sync only; token counts are a conservative local estimate. `cost_usd` logs 0 and `list_cost_usd` logs the API-rate equivalent.
+  - `anthropic`: the Anthropic API (`ANTHROPIC_API_KEY`). Pay per token, exact token counting, Batches API. Intended for the Phase 2 scheduled job; switching to it is the owner's decision.
 - Use structured outputs (`output_config.format`) with a JSON schema. No assistant prefill and no forced `tool_choice`, since current models reject both. Validate the response again with zod.
 
 ## Stack
@@ -74,7 +76,9 @@ In scope:
 Not in Phase 1: frontend, geocoding, GitHub Actions (all Phase 2).
 
 ## Secrets (env)
-`ANTHROPIC_API_KEY`, optionally `LEGISTAR_TOKEN`. Phase 2 adds `SUPABASE_URL` and `SUPABASE_SERVICE_ROLE_KEY`.
+- None needed for the `claude-code` provider, beyond being signed in to `claude`. Set `CLAUDE_BIN` if it isn't on PATH; in cloud sessions use `CLAUDE_BIN=$CLAUDE_CODE_EXECPATH`.
+- `ANTHROPIC_API_KEY` only for the `anthropic` provider.
+- `LEGISTAR_TOKEN` is optional. Phase 2 adds `SUPABASE_URL` and `SUPABASE_SERVICE_ROLE_KEY`.
 
 ## Cloud dev sessions
 Node's built-in `fetch` ignores `HTTPS_PROXY`. In Claude Code cloud sessions, run network commands with `NODE_USE_ENV_PROXY=1`, for example `NODE_USE_ENV_PROXY=1 npm run ingest -- --dry-run`. This isn't needed locally or in GitHub Actions.

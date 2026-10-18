@@ -23,6 +23,7 @@ const baseItem: ExtractedItem = {
 
 class FakeProvider implements LlmProvider {
   readonly name = "fake";
+  readonly supportsBatch = true;
   calls: { req: LlmRequest; mode: RunMode }[] = [];
   constructor(private readonly respond: (req: LlmRequest) => Partial<LlmResponse>) {}
   async countTokens(req: LlmRequest) {

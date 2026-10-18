@@ -1,0 +1,136 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "item_number": {
+      "description": "Agenda item number exactly as printed, e.g. '5.b' or 'S.5'",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "case_number": {
+      "description": "Case/petition number verbatim, e.g. RZ-25-03",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "action_type": {
+      "type": "string",
+      "enum": [
+        "Zoning",
+        "Infrastructure",
+        "Budget",
+        "Other"
+      ]
+    },
+    "title": {
+      "type": "string"
+    },
+    "plain_english_summary": {
+      "type": "string",
+      "description": "Max 2 sentences, neutral, no speculation"
+    },
+    "addresses": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Street addresses verbatim"
+    },
+    "parcel_pins": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Wake County 10-digit PINs verbatim"
+    },
+    "approval_status": {
+      "type": "string",
+      "enum": [
+        "scheduled",
+        "approved",
+        "denied",
+        "continued",
+        "withdrawn",
+        "unknown"
+      ]
+    },
+    "vote_text": {
+      "description": "Recorded vote, verbatim, only from minutes/action agendas",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "evidence_quote": {
+      "description": "Verbatim quote from the document supporting the item / its status",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "source_pages": {
+      "type": "array",
+      "items": {
+        "type": "integer",
+        "minimum": -9007199254740991,
+        "maximum": 9007199254740991
+      },
+      "description": "1-based page numbers from the --- page N --- markers"
+    },
+    "extraction_confidence": {
+      "type": "number",
+      "description": "0 to 1"
+    },
+    "date": {
+      "type": "string"
+    },
+    "municipality": {
+      "type": "string"
+    },
+    "body": {
+      "type": "string"
+    },
+    "meeting_type": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "document_type": {
+      "type": "string",
+      "enum": [
+        "agenda",
+        "packet",
+        "minutes",
+        "action_agenda"
+      ]
+    },
+    "source_url": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "item_number",
+    "case_number",
+    "action_type",
+    "title",
+    "plain_english_summary",
+    "addresses",
+    "parcel_pins",
+    "approval_status",
+    "vote_text",
+    "evidence_quote",
+    "source_pages",
+    "extraction_confidence",
+    "date",
+    "municipality",
+    "body",
+    "meeting_type",
+    "document_type",
+    "source_url"
+  ],
+  "additionalProperties": false
+}

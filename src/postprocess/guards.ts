@@ -45,9 +45,9 @@ export function guardItem(item: ExtractedItem, ctx: GuardContext): { item: Extra
   }
   out.source_pages = [...new Set(validPages)].sort((a, b) => a - b);
 
-  const searchTexts = out.source_pages.length
-    ? out.source_pages.map((p) => ctx.pageText.get(p)!)
-    : [...ctx.pageText.values()];
+  const cited = out.source_pages.length ? out.source_pages.map((p) => ctx.pageText.get(p)!) : [...ctx.pageText.values()];
+  // Quotes can run across a page break, so also search the cited pages joined in order.
+  const searchTexts = cited.length > 1 ? [...cited, cited.join("\n")] : cited;
   const evidenceOk = !!item.evidence_quote && quoteAppearsIn(item.evidence_quote, searchTexts);
   if (item.evidence_quote && !evidenceOk) {
     warnings.push(`${label}: evidence_quote not found verbatim in source`);

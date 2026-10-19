@@ -1,7 +1,7 @@
 {
   "reviewed": false,
   "labeler": "claude-draft",
-  "notes": "Built from the Legistar API (one page per item). Consent items (pages 11-29) were approved by the Consent Agenda motion, which is copied onto each item's page with the roll-call vote. 26-28 have their own passed motions. 29 was a public hearing with no vote. Appointments show no recorded action in the API, so they are optional and 'unknown'. Skipped: agenda/minutes approval, recognitions, proclamation, public comment, reports.",
+  "notes": "Built from the Legistar API (one page per item). Consent items (pages 11-29) were approved by the Consent Agenda motion, which is copied onto each item's page with the roll-call vote. 26-28 have their own passed motions. 29 was a public hearing with no vote. Appointments show no recorded action in the API, so they are optional and 'unknown'. Skipped: agenda/minutes approval, recognitions, proclamation, public comment, reports. Added after the first eval run: the closed-session note on page 52 records a $195,000 settlement approved 6-1 (the labeler had missed it; the model found it). action_type not scored (legal settlement).",
   "items": [
     {
       "item_number": "6",
@@ -317,6 +317,14 @@
       ],
       "action_type": "Other",
       "optional": true
+    },
+    {
+      "item_number": null,
+      "title": "Closed session: approve $195,000 settlement in Briggs vs. Wake County Sheriff and Deputy Deras",
+      "approval_status": "approved",
+      "source_pages": [
+        52
+      ]
     }
   ]
 }

@@ -31,6 +31,18 @@ describe("guardItem", () => {
     expect(warnings).toEqual([]);
   });
 
+  it("accepts a verbatim quote that runs across a page break", () => {
+    const pageText = new Map([
+      [4, "Recommendation - Table consideration of ANX-2023-13 to include property"],
+      [5, "owned by the petitioners to the November 2, 2026 meeting.\nMOTION RESULTS: Passed Unanimously (5-0)"],
+    ]);
+    const { item: out } = guardItem(
+      item({ approval_status: "continued", source_pages: [4, 5], vote_text: "Passed Unanimously (5-0)", evidence_quote: "to include property owned by the petitioners to the November 2, 2026 meeting." }),
+      { documentType: "minutes", pageText },
+    );
+    expect(out.approval_status).toBe("continued");
+  });
+
   it("downgrades a decided status whose quote is not in the source", () => {
     const { item: out } = guardItem(item({ evidence_quote: "approved unanimously" }), {
       documentType: "minutes",

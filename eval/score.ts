@@ -1,4 +1,4 @@
-import { quoteAppearsIn } from "../src/postprocess/guards.js";
+import { quoteAppearsIn, quoteMatchesOcr } from "../src/postprocess/guards.js";
 import type { CivicAction, ExtractedItem } from "../src/schema/civic_action.js";
 
 /** Expected items are hand-labeled; fields the labeler can't judge may be omitted. */
@@ -52,7 +52,13 @@ export function setF1(expected: string[], predicted: string[]): number {
 }
 
 /** Greedy best-first matching of predicted to expected items, then field-level scoring. */
-export function scoreDocument(expected: ExpectedItem[], predicted: CivicAction[], sourceText: string): DocScore {
+export function scoreDocument(
+  expected: ExpectedItem[],
+  predicted: CivicAction[],
+  sourceText: string,
+  /** Source text came from OCR, so evidence quotes are matched tolerantly. */
+  ocr = false,
+): DocScore {
   const pairs: { i: number; j: number; s: number }[] = [];
   expected.forEach((e, i) => predicted.forEach((p, j) => {
     const s = matchScore(e, p);
@@ -102,7 +108,9 @@ export function scoreDocument(expected: ExpectedItem[], predicted: CivicAction[]
     setF1: sets,
     approvalFalsePositives,
     evidence: {
-      verbatim: withQuote.filter((p) => quoteAppearsIn(p.evidence_quote!, [sourceText])).length,
+      verbatim: withQuote.filter((p) =>
+        ocr ? quoteMatchesOcr(p.evidence_quote!, [sourceText]) : quoteAppearsIn(p.evidence_quote!, [sourceText]),
+      ).length,
       total: withQuote.length,
     },
   };

@@ -22,7 +22,10 @@ Wake County, NC civic data pipeline. It ingests meeting agendas, packets and min
 ## Stack
 - Node 22, TypeScript (ESM, strict), `tsx` to run, Vitest to test.
 - Cheerio for HTML. Puppeteer only if a page is JS-rendered; not used in Phase 1.
-- `@anthropic-ai/sdk`, `zod`, `yaml`, `pdf-lib`, and the poppler `pdftotext` CLI.
+- `@anthropic-ai/sdk`, `zod`, `yaml`, `pdf-lib`, and the poppler `pdftotext` / `pdftoppm` CLIs.
+- `tesseract` (optional): OCR for scanned pages, used only to verify vote quotes; the model still gets the real PDF page.
+  - Install: `apt install poppler-utils tesseract-ocr` or `brew install poppler tesseract`.
+  - Turn it off with `ocr.enabled` in `config/llm.yaml`. Without tesseract, votes on scanned pages stay `unknown`.
 
 ## Layout
 ```
@@ -53,6 +56,7 @@ data/                       cache, outputs, usage logs (gitignored)
 - **Never invent facts.** Use null when a value isn't stated.
 - **`approval_status`:** only `approved`/`denied`/`continued`/`withdrawn` when it comes from minutes or an action agenda with a quoted vote.
   - The quote must be in `evidence_quote` and appear verbatim in the source text. Code checks this.
+  - On scanned (OCR'd) pages the match is approximate: up to 8% character edits, exact for short quotes. Confidence is then capped at 0.8.
   - Agendas are always `scheduled`.
 - Every extracted item carries `evidence_quote` and `source_pages`.
 - **Log usage for every LLM call:** input/output/cache tokens, model, mode (sync/batch) and computed cost, per document.

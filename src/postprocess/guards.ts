@@ -5,12 +5,20 @@ export interface GuardContext {
   documentType: DocumentType;
   /** Source text per 1-based page for the chunk the item came from. */
   pageText: Map<number, string>;
+  /** Pages whose text came from OCR; quotes on them are matched tolerantly. */
+  ocrPages?: Set<number>;
 }
 
 const DECIDED = new Set(["approved", "denied", "continued", "withdrawn"]);
 const VOTE_DOCS = new Set<DocumentType>(["minutes", "action_agenda"]);
 /** Confidence ceiling for items whose evidence_quote can't be found in the source. */
 const UNVERIFIED_CONFIDENCE_CAP = 0.5;
+/** Confidence ceiling when the quote was only matched approximately against OCR text. */
+const OCR_CONFIDENCE_CAP = 0.8;
+/** Edits allowed per character when matching against OCR text (OCR misreads dashes, case, punctuation). */
+const OCR_MAX_ERROR_RATE = 0.08;
+/** Shorter quotes must match OCR text exactly; a few edits could make a short fake quote match. */
+const OCR_MIN_FUZZY_LENGTH = 30;
 
 /** Normalizes text for verbatim comparison: case, whitespace, quotes and dashes. */
 export function normalizeForMatch(s: string): string {
@@ -21,6 +29,40 @@ export function normalizeForMatch(s: string): string {
     .replace(/[‐-―−]/g, "-")
     .replace(/\s+/g, " ")
     .trim();
+}
+
+/** Letters and digits only, single-spaced: what OCR reliably preserves. */
+function normalizeForOcr(s: string): string {
+  return s.toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
+}
+
+/**
+ * Approximate substring search (Sellers' algorithm): is there a span of `text` within
+ * `maxErrors` insertions/deletions/substitutions of `pattern`?
+ */
+export function approxContains(pattern: string, text: string, maxErrors: number): boolean {
+  const m = pattern.length;
+  let prev = Array.from({ length: m + 1 }, (_, i) => i);
+  for (let j = 1; j <= text.length; j++) {
+    const cur = [0];
+    for (let i = 1; i <= m; i++) {
+      const cost = pattern[i - 1] === text[j - 1] ? 0 : 1;
+      cur[i] = Math.min(prev[i - 1]! + cost, prev[i]! + 1, cur[i - 1]! + 1);
+    }
+    if (cur[m]! <= maxErrors) return true;
+    prev = cur;
+  }
+  return false;
+}
+
+/** Tolerant match for quotes on OCR'd pages. */
+export function quoteMatchesOcr(quote: string, texts: string[]): boolean {
+  const q = normalizeForOcr(quote);
+  if (!q) return false;
+  const exact = texts.some((t) => normalizeForOcr(t).includes(q));
+  if (exact || q.length < OCR_MIN_FUZZY_LENGTH) return exact;
+  const maxErrors = Math.floor(q.length * OCR_MAX_ERROR_RATE);
+  return texts.some((t) => approxContains(q, normalizeForOcr(t), maxErrors));
 }
 
 export function quoteAppearsIn(quote: string, texts: string[]): boolean {
@@ -48,7 +90,11 @@ export function guardItem(item: ExtractedItem, ctx: GuardContext): { item: Extra
   const cited = out.source_pages.length ? out.source_pages.map((p) => ctx.pageText.get(p)!) : [...ctx.pageText.values()];
   // Quotes can run across a page break, so also search the cited pages joined in order.
   const searchTexts = cited.length > 1 ? [...cited, cited.join("\n")] : cited;
-  const evidenceOk = !!item.evidence_quote && quoteAppearsIn(item.evidence_quote, searchTexts);
+  const exactOk = !!item.evidence_quote && quoteAppearsIn(item.evidence_quote, searchTexts);
+  const citesOcr = (out.source_pages.length ? out.source_pages : [...ctx.pageText.keys()]).some((p) => ctx.ocrPages?.has(p));
+  const ocrOk = !exactOk && citesOcr && !!item.evidence_quote && quoteMatchesOcr(item.evidence_quote, searchTexts);
+  const evidenceOk = exactOk || ocrOk;
+  if (ocrOk) warnings.push(`${label}: evidence_quote matched approximately against OCR text`);
   if (item.evidence_quote && !evidenceOk) {
     warnings.push(`${label}: evidence_quote not found verbatim in source`);
   }
@@ -74,6 +120,7 @@ export function guardItem(item: ExtractedItem, ctx: GuardContext): { item: Extra
 
   out.extraction_confidence = Math.min(1, Math.max(0, item.extraction_confidence));
   if (!evidenceOk) out.extraction_confidence = Math.min(out.extraction_confidence, UNVERIFIED_CONFIDENCE_CAP);
+  else if (ocrOk) out.extraction_confidence = Math.min(out.extraction_confidence, OCR_CONFIDENCE_CAP);
 
   return { item: out, warnings };
 }

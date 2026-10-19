@@ -25,4 +25,6 @@ Provider: `claude-code` (owner's Claude subscription). 10 real documents: 5 Fuqu
 - A label the draft missed was added: the closed-session $195,000 settlement on the 8/17 Wake minutes. The model had found it.
 - The guard now accepts verbatim quotes that run across a page break.
 
-Re-run after the owner reviews the labels (`"reviewed": true`).
+**Update, OCR added:** with tesseract OCR of image-only pages, `fv-pb-minutes-2026-07-20` scores 100% on approval_status (4/4 approved; quotes matched approximately against OCR text; confidence capped at 0.8), with 0 approval false positives. That was the main remaining error above.
+
+The owner accepted the draft labels as-is on 2026-10-19 ("good with what you have"). Re-run after any label edits. (`"reviewed": true`).

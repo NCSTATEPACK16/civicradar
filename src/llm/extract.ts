@@ -150,9 +150,12 @@ export async function extract(
   for (const [doc, input] of inputs.entries()) {
     const guarded: ExtractedItem[] = [];
     for (const job of jobs.filter((j) => j.doc === doc)) {
-      const pageText = new Map(input.pages.filter((p) => job.chunk.pages.includes(p.page)).map((p) => [p.page, p.text]));
+      const chunkPages = input.pages.filter((p) => job.chunk.pages.includes(p.page));
+      // Scanned pages have no text layer; their OCR text (if any) is what quotes get checked against.
+      const pageText = new Map(chunkPages.map((p) => [p.page, p.imageOnly && p.ocrText ? p.ocrText : p.text]));
+      const ocrPages = new Set(chunkPages.filter((p) => p.imageOnly && p.ocrText).map((p) => p.page));
       for (const item of job.items) {
-        const { item: safe, warnings } = guardItem(item, { documentType: input.meta.documentType, pageText });
+        const { item: safe, warnings } = guardItem(item, { documentType: input.meta.documentType, pageText, ocrPages });
         guarded.push(safe);
         results[doc]!.warnings.push(...warnings);
       }

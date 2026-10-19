@@ -19,6 +19,11 @@ twoPassAbovePages: 100
 triagePages: 15
 # A page with fewer non-whitespace characters than this is treated as image-only.
 imageOnlyCharThreshold: 20
+# OCR image-only pages locally (tesseract + pdftoppm) so vote quotes on scanned pages can be
+# verified. The model still gets the real PDF page; OCR text is only used by the guards.
+ocr:
+  enabled: true
+  language: eng
 
 effort:
   default: low

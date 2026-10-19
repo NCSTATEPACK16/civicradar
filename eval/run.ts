@@ -2,7 +2,7 @@ import { existsSync, readdirSync, readFileSync } from "node:fs";
 import { mkdir, writeFile } from "node:fs/promises";
 import { join } from "node:path";
 import { parseArgs } from "node:util";
-import { loadLlmConfig } from "../src/config.js";
+import { extractOptions, loadLlmConfig } from "../src/config.js";
 import { createProvider, extract, type DocMeta, type ExtractInput } from "../src/llm/index.js";
 import { extractPages, type PdfPage } from "../src/pdf/text.js";
 import { appendUsage } from "../src/usage/log.js";
@@ -36,7 +36,7 @@ for (const id of ids) {
   const pdfPath = join(dir, "source.pdf");
   const pdf = existsSync(pdfPath) ? readFileSync(pdfPath) : null;
   const pages = pdf
-    ? await extractPages(pdf, cfg.imageOnlyCharThreshold)
+    ? await extractPages(pdf, extractOptions(cfg))
     : (JSON.parse(readFileSync(join(dir, "pages.json"), "utf8")) as PdfPage[]);
   inputs.push({ meta: { ...meta, docId: `eval:${id}` }, pdf, pages });
   expected.push(JSON.parse(readFileSync(join(dir, "expected.json"), "utf8")));
@@ -50,7 +50,8 @@ const results = await extract(inputs, createProvider(cfg), cfg, { mode: values.b
 for (const r of results) await appendUsage(r.usage, "data/eval-usage.jsonl");
 
 const scores: DocScore[] = results.map((r, k) =>
-  scoreDocument(expected[k]!.items, r.actions, inputs[k]!.pages.map((p) => p.text).join("\n")),
+  scoreDocument(expected[k]!.items, r.actions, inputs[k]!.pages.map((p) => (p.imageOnly ? (p.ocrText ?? "") : p.text)).join("\n"),
+    inputs[k]!.pages.some((p) => p.imageOnly && p.ocrText)),
 );
 
 const sum = (f: (s: DocScore) => number) => scores.reduce((n, s) => n + f(s), 0);

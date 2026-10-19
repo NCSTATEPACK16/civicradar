@@ -1,3 +1,5 @@
+import { execFileSync } from "node:child_process";
+import { readFileSync } from "node:fs";
 import { PDFDocument } from "pdf-lib";
 import { describe, expect, it } from "vitest";
 import { buildChunk, chunkPages, selectPages } from "../src/pdf/chunk.js";
@@ -15,6 +17,25 @@ describe("pdf text extraction", () => {
     expect(pages[1]!.imageOnly).toBe(true);
     expect(pages[2]!.page).toBe(3);
   });
+
+  const hasTesseract = (() => {
+    try {
+      execFileSync("tesseract", ["--version"], { stdio: "ignore" });
+      return true;
+    } catch {
+      return false;
+    }
+  })();
+
+  it.skipIf(!hasTesseract)("OCRs image-only pages of a real scanned PDF", async () => {
+    const scanned = readFileSync("eval/fixtures/fv-pb-minutes-2026-07-20/source.pdf");
+    const page3 = await PDFDocument.load(await slicePdf(scanned, [3])).then((d) => d.save());
+    const [p] = await extractPages(Buffer.from(page3), { ocr: true });
+    expect(p!.imageOnly).toBe(true);
+    expect(p!.text).toBe("");
+    expect(p!.ocrText).toContain("REZ-2026-10");
+    expect(p!.ocrText).toMatch(/Motion Passed 6 - 0/);
+  }, 60_000);
 
   it("slices selected pages into a new PDF", async () => {
     const pdf = await makePdf([["a"], ["b"], ["c"]]);

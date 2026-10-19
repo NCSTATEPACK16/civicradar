@@ -2,7 +2,7 @@ import { createHash } from "node:crypto";
 import { mkdir, writeFile } from "node:fs/promises";
 import { parseArgs } from "node:util";
 import { createAdapter } from "../adapters/registry.js";
-import { loadJurisdictions, loadLlmConfig } from "../config.js";
+import { extractOptions, loadJurisdictions, loadLlmConfig } from "../config.js";
 import { PoliteFetcher } from "../http/politeFetch.js";
 import { createProvider, extract, type ExtractInput } from "../llm/index.js";
 import { appendUsage } from "../usage/log.js";
@@ -36,7 +36,7 @@ for (const j of jurisdictions) {
       if (!docTypes.has(doc.type) || inputs.length >= maxDocs) continue;
       let loaded;
       try {
-        loaded = await loadDocument(adapter, doc, meeting, http, cfg.imageOnlyCharThreshold);
+        loaded = await loadDocument(adapter, doc, meeting, http, extractOptions(cfg));
       } catch (err) {
         console.error(`  ${meeting.date} ${doc.type.padEnd(8)} FAILED ${doc.url}: ${(err as Error).message}`);
         continue;

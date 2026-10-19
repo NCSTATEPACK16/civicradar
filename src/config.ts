@@ -34,6 +34,7 @@ export const LlmConfigSchema = z.object({
   twoPassAbovePages: z.number().int().positive(),
   triagePages: z.number().int().positive(),
   imageOnlyCharThreshold: z.number().int().nonnegative(),
+  ocr: z.object({ enabled: z.boolean(), language: z.string() }).default({ enabled: false, language: "eng" }),
   effort: z.object({ default: Effort, escalation: Effort }),
   escalation: z.object({ confidenceBelow: z.number(), imageOnlyConfidenceBelow: z.number() }),
   pricing: z.object({
@@ -49,4 +50,9 @@ export type Pricing = LlmConfig["pricing"];
 
 export function loadLlmConfig(path = "config/llm.yaml"): LlmConfig {
   return LlmConfigSchema.parse(parse(readFileSync(path, "utf8")));
+}
+
+/** PDF extraction settings derived from the LLM config. */
+export function extractOptions(cfg: LlmConfig) {
+  return { imageOnlyCharThreshold: cfg.imageOnlyCharThreshold, ocr: cfg.ocr.enabled, ocrLanguage: cfg.ocr.language };
 }

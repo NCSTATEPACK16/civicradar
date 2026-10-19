@@ -86,3 +86,40 @@ describe("dedupeItems", () => {
     expect(merged[0]!.addresses.sort()).toEqual(["A", "B"]);
   });
 });
+
+describe("guardItem on OCR'd pages", () => {
+  // Real tesseract output for page 3 of the scanned Fuquay-Varina Planning Board minutes (2026-07-20).
+  const ocr =
+    "Motion —- Recommend approval of REZ-2026-10, a zoning map amendment for 210 S West Street,\n" +
+    "from the Residential Medium Density (RMD) Zoning District to the Town Center Residential (TCR)\n" +
+    "Zoning District as it is reasonable and in the best interest of the public for the reasons identified by\nStaff.\n\n" +
+    "MOTION: Nolan Perry\nSECOND: Tommy Pate\nMOTION RESULT: Motion Passed 6 - 0";
+  const ctx = { documentType: "minutes" as const, pageText: new Map([[3, ocr]]), ocrPages: new Set([3]) };
+  const scanned = (quote: string) =>
+    item({ case_number: "REZ-2026-10", source_pages: [3], vote_text: "Motion Passed 6 - 0", evidence_quote: quote });
+
+  it("keeps a decided status when the quote matches the OCR text despite OCR misreads", () => {
+    const quote =
+      "Motion – Recommend approval of REZ-2026-10, a zoning map amendment for 210 S West Street, from the Residential Medium Density (RMD) Zoning District to the Town Center Residential (TCR) Zoning District as it is reasonable and in the best interest of the public for the reasons identified by staff.";
+    const { item: out, warnings } = guardItem(scanned(quote), ctx);
+    expect(out.approval_status).toBe("approved");
+    expect(out.extraction_confidence).toBeLessThanOrEqual(0.8);
+    expect(warnings.some((w) => w.includes("approximately"))).toBe(true);
+  });
+
+  it("still rejects a quote that is not on the scanned page", () => {
+    const { item: out } = guardItem(
+      scanned("The Board voted unanimously to deny REZ-2026-10 after a lengthy public hearing on traffic."),
+      ctx,
+    );
+    expect(out.approval_status).toBe("unknown");
+  });
+
+  it("does not use tolerant matching on pages with a real text layer", () => {
+    const { item: out } = guardItem(scanned("Motion – Recommend approval of REZ-2026-10, a zoning map amendment for 210 S West Street"), {
+      ...ctx,
+      ocrPages: new Set<number>(),
+    });
+    expect(out.approval_status).toBe("unknown");
+  });
+});

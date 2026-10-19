@@ -5,7 +5,7 @@ import { mkdir, writeFile } from "node:fs/promises";
 import { join } from "node:path";
 import { parseArgs } from "node:util";
 import { createAdapter } from "../src/adapters/registry.js";
-import { loadJurisdictions, loadLlmConfig } from "../src/config.js";
+import { extractOptions, loadJurisdictions, loadLlmConfig } from "../src/config.js";
 import { PoliteFetcher } from "../src/http/politeFetch.js";
 import type { DocMeta } from "../src/llm/index.js";
 import { loadDocument } from "../src/pipeline/load.js";
@@ -34,7 +34,7 @@ if (!meeting) throw new Error(`meeting ${values.meeting} not found for ${j.id} s
 const doc = (await adapter.listDocuments(meeting)).find((d) => d.type === values.type);
 if (!doc) throw new Error(`meeting ${meeting.id} has no ${values.type} document`);
 
-const { pages, pdf } = await loadDocument(adapter, doc, meeting, http, loadLlmConfig().imageOnlyCharThreshold);
+const { pages, pdf } = await loadDocument(adapter, doc, meeting, http, extractOptions(loadLlmConfig()));
 const meta: DocMeta = {
   docId: id,
   municipality: meeting.municipality,

@@ -1,0 +1,105 @@
+{
+  "reviewed": false,
+  "labeler": "claude-draft",
+  "notes": "Built from the Legistar API: each 'page' is one agenda item, so source_pages are item positions. Agenda: every item 'scheduled'. Legistar file numbers (16-xxxx) are not scored as case_number. Skipped: procedural items, proclamations/recognitions, public comment, reports. action_type omitted where the category is ambiguous.",
+  "items": [
+    {
+      "item_number": "6",
+      "title": "Award Construction Contract for Facility Condition Assessment (FCA) Upgrades to Existing Stations Project",
+      "approval_status": "scheduled",
+      "source_pages": [
+        11
+      ],
+      "action_type": "Infrastructure"
+    },
+    {
+      "item_number": "7",
+      "title": "Award Construction Contract for Mini City EMS Station Replacement Project on Hargrove Road",
+      "approval_status": "scheduled",
+      "source_pages": [
+        12
+      ],
+      "action_type": "Infrastructure"
+    },
+    {
+      "item_number": "8",
+      "title": "Memorandum of Understanding with Wake Technical Community College for Fire and Emergency Services Training",
+      "approval_status": "scheduled",
+      "source_pages": [
+        13
+      ],
+      "action_type": "Other",
+      "optional": true
+    },
+    {
+      "item_number": "9",
+      "title": "Second Round 2026 Affordable Housing Development Program (AHDP) Affordable Multifamily Development Loans",
+      "approval_status": "scheduled",
+      "source_pages": [
+        14
+      ]
+    },
+    {
+      "item_number": "10",
+      "title": "Accept and Appropriate $689,500.08 from the NC State Bureau of Investigation for the Local Law Enforcement Bonus Program",
+      "approval_status": "scheduled",
+      "source_pages": [
+        15
+      ],
+      "action_type": "Budget"
+    },
+    {
+      "item_number": "11",
+      "title": "Technical Corrections to the Business Development Grant Policy",
+      "approval_status": "scheduled",
+      "source_pages": [
+        16
+      ],
+      "action_type": "Other",
+      "optional": true
+    },
+    {
+      "item_number": "12",
+      "title": "Amendments to the Paid Parental Leave Benefit",
+      "approval_status": "scheduled",
+      "source_pages": [
+        17
+      ],
+      "action_type": "Other",
+      "optional": true
+    },
+    {
+      "item_number": "13",
+      "title": "Adoption of the Schedules, Standards and Rules for the 2027 County-wide Real Property Revaluation",
+      "approval_status": "scheduled",
+      "source_pages": [
+        18
+      ]
+    },
+    {
+      "item_number": "15",
+      "title": "Public Hearing on Comprehensive Plan Amendment 01-26 to Adopt the Neuse North Area Plan",
+      "approval_status": "scheduled",
+      "source_pages": [
+        22
+      ],
+      "action_type": "Zoning"
+    },
+    {
+      "item_number": "16",
+      "title": "Memorandum of Understanding with WCPSS for Land Exchange for Affordable Housing",
+      "approval_status": "scheduled",
+      "source_pages": [
+        23
+      ]
+    },
+    {
+      "item_number": "17",
+      "title": "Approve Funding for an Agricultural Conservation Easement on the Tredway Farm Near Zebulon",
+      "approval_status": "scheduled",
+      "source_pages": [
+        24
+      ]
+    }
+  ]
+}

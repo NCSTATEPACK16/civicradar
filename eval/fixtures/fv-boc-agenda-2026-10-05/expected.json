@@ -1,0 +1,152 @@
+{
+  "reviewed": false,
+  "labeler": "claude-draft",
+  "notes": "Agenda: all items 'scheduled' (6.A says 'to be withdrawn' and 7.D 'to be tabled', but no outcome is recorded). Skipped: minutes approval, proclamations/introductions, manager's report, event announcements. Addresses labeled only where one address is stated; multi-address strings left unscored. 8.D action_type ambiguous (fee vs. subdivision) so not scored.",
+  "items": [
+    {
+      "item_number": "6.A",
+      "title": "Voluntary Annexation Petition - Grimes/Davis - Wade Nash Road",
+      "approval_status": "scheduled",
+      "source_pages": [
+        1
+      ],
+      "case_number": "ANX-2023-13",
+      "action_type": "Zoning",
+      "parcel_pins": [
+        "0647992082",
+        "0657080903",
+        "0657097344",
+        "0657191010"
+      ]
+    },
+    {
+      "item_number": "6.B",
+      "title": "Zoning Map Amendment - 417 & 419 Raleigh Street",
+      "approval_status": "scheduled",
+      "source_pages": [
+        1
+      ],
+      "case_number": "REZ-2026-11",
+      "action_type": "Zoning",
+      "parcel_pins": [
+        "0666173158",
+        "0666174128"
+      ]
+    },
+    {
+      "item_number": "6.C",
+      "title": "Zoning Map Amendment - M/I Homes of Raleigh - Sunset Lake Road",
+      "approval_status": "scheduled",
+      "source_pages": [
+        1
+      ],
+      "case_number": "REZ-2025-18",
+      "action_type": "Zoning",
+      "parcel_pins": [
+        "0667674582",
+        "0667681140",
+        "0667589880"
+      ]
+    },
+    {
+      "item_number": "7.A",
+      "title": "Voluntary Annexation Petition - Town of Fuquay-Varina, 980 Wilbon Road",
+      "approval_status": "scheduled",
+      "source_pages": [
+        2
+      ],
+      "case_number": "ANX-2026-05",
+      "action_type": "Zoning",
+      "parcel_pins": [
+        "0657231047"
+      ],
+      "addresses": [
+        "980 Wilbon Road"
+      ]
+    },
+    {
+      "item_number": "7.B",
+      "title": "Zoning Map Amendment - Envision Homes - 7151 Sunset Lake Road",
+      "approval_status": "scheduled",
+      "source_pages": [
+        2
+      ],
+      "case_number": "REZ-2026-07",
+      "action_type": "Zoning",
+      "parcel_pins": [
+        "0667545940"
+      ],
+      "addresses": [
+        "7151 Sunset Lake Road"
+      ]
+    },
+    {
+      "item_number": "7.C",
+      "title": "Zoning Map Amendment & Land Use Plan Amendment - WakeMed - 6126 Dwight Rowland Road",
+      "approval_status": "scheduled",
+      "source_pages": [
+        2
+      ],
+      "case_number": "REZ-2026-08",
+      "action_type": "Zoning",
+      "parcel_pins": [
+        "0677761424"
+      ],
+      "addresses": [
+        "6126 Dwight Rowland Road"
+      ]
+    },
+    {
+      "item_number": "7.D",
+      "title": "Zoning Map Amendment - Gemstone Homes - 602 & 606 S Main Street",
+      "approval_status": "scheduled",
+      "source_pages": [
+        2
+      ],
+      "case_number": "REZ-2026-09",
+      "action_type": "Zoning",
+      "parcel_pins": [
+        "0656952194",
+        "0656952085"
+      ]
+    },
+    {
+      "item_number": "8.A",
+      "title": "2027 Town Board Meeting Schedule",
+      "approval_status": "scheduled",
+      "source_pages": [
+        2
+      ],
+      "action_type": "Other",
+      "optional": true
+    },
+    {
+      "item_number": "8.B",
+      "title": "Project Ordinance - Closures",
+      "approval_status": "scheduled",
+      "source_pages": [
+        2
+      ],
+      "action_type": "Budget"
+    },
+    {
+      "item_number": "8.C",
+      "title": "Special Event Application and Amplified Sound Permit - Mason Jar Lager Company Outdoor Movie Night",
+      "approval_status": "scheduled",
+      "source_pages": [
+        2
+      ],
+      "action_type": "Other",
+      "optional": true
+    },
+    {
+      "item_number": "8.D",
+      "title": "Recreation Fee-In-Lieu - Grigsby Parke",
+      "approval_status": "scheduled",
+      "source_pages": [
+        2
+      ],
+      "case_number": "SUB-PR-2025-07"
+    }
+  ]
+}

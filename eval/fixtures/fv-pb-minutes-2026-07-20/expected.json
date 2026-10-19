@@ -1,0 +1,78 @@
+{
+  "reviewed": false,
+  "labeler": "claude-draft",
+  "notes": "Scanned PDF: all 14 pages are image-only (read from the page images). The Planning Board is advisory: each 'Motion Passed' recommends approval to the Town Board; labeled 'approved' because the motion on the item passed. Note that page 2 says staff recommended 'REZ-2026-06' (a typo in the source) while the item is REZ-2026-10. Skipped: minutes approval, the recusal motion, Planning Staff Report (information only), adjournment.",
+  "items": [
+    {
+      "item_number": "4.A",
+      "title": "Zoning Map Amendment - 210 S West Street, RMD to TCR (recommended approval)",
+      "case_number": "REZ-2026-10",
+      "action_type": "Zoning",
+      "approval_status": "approved",
+      "parcel_pins": [
+        "0656867994"
+      ],
+      "source_pages": [
+        2,
+        3
+      ],
+      "addresses": [
+        "210 S West Street"
+      ]
+    },
+    {
+      "item_number": "4.B",
+      "title": "Zoning Map Amendment - 417 & 419 Raleigh Street, RLD to TCR (recommended approval)",
+      "case_number": "REZ-2026-11",
+      "action_type": "Zoning",
+      "approval_status": "approved",
+      "parcel_pins": [
+        "0666173158",
+        "0666174128"
+      ],
+      "source_pages": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ]
+    },
+    {
+      "item_number": "4.C",
+      "title": "Zoning Map Amendment & Land Use Plan Amendment - Sampson-Bladen Oil Company - Piney Grove Wilbon Road (recommended approval)",
+      "case_number": "REZ-2026-12",
+      "action_type": "Zoning",
+      "approval_status": "approved",
+      "parcel_pins": [
+        "0647825346",
+        "0647825183",
+        "0647725066"
+      ],
+      "source_pages": [
+        9,
+        10,
+        11
+      ]
+    },
+    {
+      "item_number": "4.D",
+      "title": "Zoning Map Amendment - M/I Homes of Raleigh - Sunset Lake Road, RMD-CZD to PUD (recommended approval)",
+      "case_number": "REZ-2025-18",
+      "action_type": "Zoning",
+      "approval_status": "approved",
+      "parcel_pins": [
+        "0667674582",
+        "0667681140",
+        "0667589880"
+      ],
+      "source_pages": [
+        11,
+        12,
+        13
+      ]
+    }
+  ]
+}

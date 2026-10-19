@@ -1,0 +1,185 @@
+{
+  "reviewed": false,
+  "labeler": "claude-draft",
+  "notes": "Minutes. 'continued' = tabled/postponed to a later meeting (6A, 7C, 7E). Consent items 8A-8D approved by one motion on page 19. 11.G is listed under Other Business with no recorded action, so it is optional with status 'unknown'. Skipped: minutes approval, presentations, fire helmet resolution (ceremonial), manager's report, events, closed session.",
+  "items": [
+    {
+      "item_number": "6A",
+      "title": "Voluntary Annexation Petition - Grimes/Davis - Wade Nash Road (tabled to Nov 2, 2026)",
+      "approval_status": "continued",
+      "source_pages": [
+        4,
+        5
+      ],
+      "case_number": "ANX-2023-13",
+      "action_type": "Zoning",
+      "parcel_pins": [
+        "0647992082",
+        "0657080903",
+        "0657097344",
+        "0657191010"
+      ]
+    },
+    {
+      "item_number": "7A",
+      "title": "Voluntary Annexation Petition - Callis Properties - Piney Grove Wilbon Road",
+      "approval_status": "approved",
+      "source_pages": [
+        5,
+        6
+      ],
+      "case_number": "ANX-2026-04",
+      "action_type": "Zoning",
+      "parcel_pins": [
+        "0647825346",
+        "0647825183",
+        "0647725066"
+      ]
+    },
+    {
+      "item_number": "7B",
+      "title": "Zoning Map Amendment - 210 S West Street, RMD to TCR",
+      "approval_status": "approved",
+      "source_pages": [
+        6,
+        7
+      ],
+      "case_number": "REZ-2026-10",
+      "action_type": "Zoning",
+      "parcel_pins": [
+        "0656867994"
+      ],
+      "addresses": [
+        "210 S West Street"
+      ]
+    },
+    {
+      "item_number": "7C",
+      "title": "Zoning Map Amendment - 417 & 419 Raleigh Street (postponed to Sep 22, 2026)",
+      "approval_status": "continued",
+      "source_pages": [
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "case_number": "REZ-2026-11",
+      "action_type": "Zoning",
+      "parcel_pins": [
+        "0666173158",
+        "0666174128"
+      ]
+    },
+    {
+      "item_number": "7D",
+      "title": "Zoning Map Amendment & Land Use Plan Amendment - Sampson-Bladen Oil Company - Piney Grove Wilbon Road",
+      "approval_status": "approved",
+      "source_pages": [
+        12,
+        13
+      ],
+      "case_number": "REZ-2026-12",
+      "action_type": "Zoning",
+      "parcel_pins": [
+        "0647825346",
+        "0647825183",
+        "0647725066"
+      ]
+    },
+    {
+      "item_number": "7E",
+      "title": "Zoning Map Amendment - M/I Homes of Raleigh - Sunset Lake Road (tabled to Sep 22, 2026)",
+      "approval_status": "continued",
+      "source_pages": [
+        13,
+        14,
+        15,
+        16,
+        17
+      ],
+      "case_number": "REZ-2025-18",
+      "action_type": "Zoning",
+      "parcel_pins": [
+        "0667674582",
+        "0667681140",
+        "0667589880"
+      ]
+    },
+    {
+      "item_number": "8A",
+      "title": "Resolution - Abatement Assessment - 411 Cherry Street",
+      "approval_status": "approved",
+      "source_pages": [
+        17,
+        19
+      ],
+      "parcel_pins": [
+        "0656792838"
+      ],
+      "addresses": [
+        "411 Cherry Street"
+      ]
+    },
+    {
+      "item_number": "8B",
+      "title": "Budget Amendment - Appropriate Insurance Proceeds - Police Department",
+      "approval_status": "approved",
+      "source_pages": [
+        18,
+        19
+      ],
+      "case_number": "BA-27-03",
+      "action_type": "Budget"
+    },
+    {
+      "item_number": "8C",
+      "title": "Budget Amendment - Bishop Photo Youth Athletic Scholarship Fund Donation",
+      "approval_status": "approved",
+      "source_pages": [
+        18,
+        19
+      ],
+      "case_number": "BA-27-04",
+      "action_type": "Budget"
+    },
+    {
+      "item_number": "8D",
+      "title": "Road Closure Request - First Friday Event",
+      "approval_status": "approved",
+      "source_pages": [
+        18,
+        19
+      ],
+      "action_type": "Other",
+      "optional": true
+    },
+    {
+      "item_number": "10A",
+      "title": "Public Service Center Phase II - Guaranteed Maximum Price Amendment - Edifice General Contractors",
+      "approval_status": "approved",
+      "source_pages": [
+        19,
+        20
+      ],
+      "action_type": "Infrastructure"
+    },
+    {
+      "item_number": "11.G",
+      "title": "Zoning Map Amendment - Envision Homes - 7151 Sunset Lake Road (first reading, no action recorded)",
+      "approval_status": "unknown",
+      "source_pages": [
+        23
+      ],
+      "case_number": "REZ-2026-07",
+      "action_type": "Zoning",
+      "parcel_pins": [
+        "0667545940"
+      ],
+      "addresses": [
+        "7151 Sunset Lake Road"
+      ],
+      "optional": true
+    }
+  ]
+}

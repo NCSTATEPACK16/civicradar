@@ -1,0 +1,37 @@
+{
+  "reviewed": false,
+  "labeler": "claude-draft",
+  "notes": "Planning Board agenda: two public hearings, both 'scheduled'.",
+  "items": [
+    {
+      "item_number": "4.A",
+      "title": "Zoning Map Amendment & Land Use Plan Amendment - WakeMed - 6126 Dwight Rowland Road",
+      "approval_status": "scheduled",
+      "source_pages": [
+        1
+      ],
+      "case_number": "REZ-2026-08",
+      "action_type": "Zoning",
+      "parcel_pins": [
+        "0677761424"
+      ],
+      "addresses": [
+        "6126 Dwight Rowland Road"
+      ]
+    },
+    {
+      "item_number": "4.B",
+      "title": "Zoning Map Amendment - Gemstone Homes - 602 & 606 S Main Street",
+      "approval_status": "scheduled",
+      "source_pages": [
+        1
+      ],
+      "case_number": "REZ-2026-09",
+      "action_type": "Zoning",
+      "parcel_pins": [
+        "0656952194",
+        "0656952085"
+      ]
+    }
+  ]
+}

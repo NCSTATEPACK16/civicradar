@@ -32,9 +32,22 @@ export interface PoliteFetcherOptions {
   fetchImpl?: typeof fetch;
   /** Treat cache entries younger than this as fresh without revalidating. */
   maxAgeMs?: number;
+  /** Delay before retrying a non-PDF response when a PDF was expected. */
+  pdfRetryDelayMs?: number;
 }
 
 export class RobotsDisallowedError extends Error {}
+
+/** The server answered, but not with the kind of file we asked for (e.g. an HTML error page). */
+export class UnexpectedContentError extends Error {}
+
+export interface GetOptions {
+  accept?: string;
+  /** Require a PDF body (%PDF header). Non-PDF bodies are retried once and never cached. */
+  expect?: "pdf";
+}
+
+const PDF_RETRY_DELAY_MS = 3000;
 
 /**
  * Fetch wrapper that honors robots.txt, identifies itself, spaces requests to the
@@ -47,6 +60,7 @@ export class PoliteFetcher {
   private readonly userAgent: string;
   private readonly fetchImpl: typeof fetch;
   private readonly maxAgeMs: number;
+  private readonly pdfRetryDelayMs: number;
   private readonly nextSlot = new Map<string, number>();
   private readonly robots = new Map<string, Promise<RobotsRules>>();
 
@@ -56,9 +70,22 @@ export class PoliteFetcher {
     this.userAgent = opts.userAgent ?? USER_AGENT;
     this.fetchImpl = opts.fetchImpl ?? fetch;
     this.maxAgeMs = opts.maxAgeMs ?? 0;
+    this.pdfRetryDelayMs = opts.pdfRetryDelayMs ?? PDF_RETRY_DELAY_MS;
   }
 
-  async get(url: string, init: { accept?: string } = {}): Promise<FetchResult> {
+  async get(url: string, init: GetOptions = {}): Promise<FetchResult> {
+    if (init.expect !== "pdf") return this.fetchOnce(url, init);
+    try {
+      return await this.fetchOnce(url, init);
+    } catch (err) {
+      // File hosts sometimes serve a transient 404/HTML page for a valid file; retry once.
+      if (!(err instanceof UnexpectedContentError)) throw err;
+      await new Promise((r) => setTimeout(r, this.pdfRetryDelayMs));
+      return this.fetchOnce(url, init);
+    }
+  }
+
+  private async fetchOnce(url: string, init: GetOptions): Promise<FetchResult> {
     const u = new URL(url);
     const rules = await this.robotsFor(u);
     if (!isAllowed(rules, u.pathname + u.search)) {
@@ -68,8 +95,11 @@ export class PoliteFetcher {
     const key = createHash("sha256").update(url).digest("hex");
     const metaPath = join(this.cacheDir, `${key}.json`);
     const bodyPath = join(this.cacheDir, `${key}.bin`);
-    const cached = await readCache(metaPath, bodyPath);
+    let cached = await readCache(metaPath, bodyPath);
 
+    if (cached && init.expect === "pdf" && !isPdf(cached.body)) {
+      cached = null;
+    }
     if (cached && this.maxAgeMs > 0 && Date.now() - Date.parse(cached.meta.fetchedAt) < this.maxAgeMs) {
       return { ...resultFrom(cached.meta, cached.body), fromCache: true };
     }
@@ -86,6 +116,11 @@ export class PoliteFetcher {
       return { ...resultFrom(cached.meta, cached.body), fromCache: true };
     }
     const body = Buffer.from(await res.arrayBuffer());
+    if (init.expect === "pdf" && (!res.ok || !isPdf(body))) {
+      throw new UnexpectedContentError(
+        `GET ${url} -> HTTP ${res.status} ${res.headers.get("content-type") ?? ""}, expected a PDF`,
+      );
+    }
     if (!res.ok) {
       throw new Error(`GET ${url} -> HTTP ${res.status}`);
     }
@@ -141,6 +176,10 @@ export class PoliteFetcher {
       return parseRobots("", this.userAgent);
     }
   }
+}
+
+function isPdf(body: Buffer): boolean {
+  return body.subarray(0, 1024).includes("%PDF-");
 }
 
 function resultFrom(meta: CacheMeta, body: Buffer): Omit<FetchResult, "fromCache"> {

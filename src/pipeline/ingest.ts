@@ -5,8 +5,8 @@ import { createAdapter } from "../adapters/registry.js";
 import { loadJurisdictions, loadLlmConfig } from "../config.js";
 import { PoliteFetcher } from "../http/politeFetch.js";
 import { createProvider, extract, type ExtractInput } from "../llm/index.js";
-import { extractPages } from "../pdf/text.js";
 import { appendUsage } from "../usage/log.js";
+import { loadDocument } from "./load.js";
 
 const { values } = parseArgs({
   options: {
@@ -34,14 +34,14 @@ for (const j of jurisdictions) {
   for (const meeting of meetings) {
     for (const doc of await adapter.listDocuments(meeting)) {
       if (!docTypes.has(doc.type) || inputs.length >= maxDocs) continue;
-      let res;
+      let loaded;
       try {
-        res = await http.get(doc.url);
+        loaded = await loadDocument(adapter, doc, meeting, http, cfg.imageOnlyCharThreshold);
       } catch (err) {
-        console.error(`  ${meeting.date} ${doc.type.padEnd(8)} FAILED ${doc.url}: ${(err as Error).cause ?? err}`);
+        console.error(`  ${meeting.date} ${doc.type.padEnd(8)} FAILED ${doc.url}: ${(err as Error).message}`);
         continue;
       }
-      const pages = await extractPages(res.body, cfg.imageOnlyCharThreshold);
+      const { pages, pdf } = loaded;
       const imageOnly = pages.filter((p) => p.imageOnly).length;
       const chars = pages.reduce((n, p) => n + p.text.length, 0);
       console.error(
@@ -49,7 +49,7 @@ for (const j of jurisdictions) {
           ` (${imageOnly} image-only, ~${Math.round(chars / 4)} tok est.) ${doc.url}`,
       );
       inputs.push({
-        pdf: res.body,
+        pdf,
         pages,
         meta: {
           docId: `${j.id}:${meeting.id}:${doc.type}:${sha256(doc.url).slice(0, 8)}`,
@@ -58,7 +58,7 @@ for (const j of jurisdictions) {
           date: meeting.date,
           meetingType: meeting.meetingType,
           documentType: doc.type,
-          sourceUrl: doc.url,
+          sourceUrl: doc.mimeType === "application/pdf" ? doc.url : meeting.sourceUrl,
         },
       });
     }

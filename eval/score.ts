@@ -2,8 +2,11 @@ import { quoteAppearsIn } from "../src/postprocess/guards.js";
 import type { CivicAction, ExtractedItem } from "../src/schema/civic_action.js";
 
 /** Expected items are hand-labeled; fields the labeler can't judge may be omitted. */
-export type ExpectedItem = Pick<ExtractedItem, "title" | "action_type" | "approval_status"> &
-  Partial<Pick<ExtractedItem, "item_number" | "case_number" | "addresses" | "parcel_pins" | "source_pages">>;
+export type ExpectedItem = Pick<ExtractedItem, "title" | "approval_status"> &
+  Partial<Pick<ExtractedItem, "action_type" | "item_number" | "case_number" | "addresses" | "parcel_pins" | "source_pages">> & {
+    /** Borderline item: matching it is fine, missing it isn't penalized, and it isn't field-scored. */
+    optional?: boolean;
+  };
 
 export interface DocScore {
   tp: number;
@@ -69,6 +72,7 @@ export function scoreDocument(expected: ExpectedItem[], predicted: CivicAction[]
   const field = Object.fromEntries(FIELDS.map((f) => [f, { correct: 0, total: 0 }])) as DocScore["field"];
   const sets: DocScore["setF1"] = { addresses: [], parcel_pins: [] };
   for (const { expected: e, predicted: p } of matched) {
+    if (e.optional) continue;
     for (const f of FIELDS) {
       if (e[f] === undefined) continue;
       field[f].total++;
@@ -83,13 +87,16 @@ export function scoreDocument(expected: ExpectedItem[], predicted: CivicAction[]
     (p) => DECIDED.has(p.approval_status) && expectedStatus.get(p) !== p.approval_status,
   ).length;
 
+  const missed = expected.filter((_, i) => !usedE.has(i));
+  const required = matched.filter((m) => !m.expected.optional);
   const withQuote = predicted.filter((p) => p.evidence_quote);
+  // Optional items are neither required (no FN when missed) nor extra (no FP when matched).
   return {
-    tp: matched.length,
+    tp: required.length,
     fp: predicted.length - matched.length,
-    fn: expected.length - matched.length,
+    fn: missed.filter((e) => !e.optional).length,
     matched,
-    missed: expected.filter((_, i) => !usedE.has(i)),
+    missed,
     extra: predicted.filter((_, j) => !usedP.has(j)),
     field,
     setF1: sets,

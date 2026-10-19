@@ -97,9 +97,11 @@ export function parseAgendaCenter(html: string, baseUrl: string): ParsedMeeting[
 
 /** Category heading for a link: nearest enclosing AgendaCenter listing's <h2>. */
 function categoryOf($: cheerio.CheerioAPI, el: Parameters<cheerio.CheerioAPI>[0]): string {
-  const listing = $(el).closest("div.listing, div[id^='cat'], section");
-  const heading = listing.find("h2").first().text() || listing.prevAll("h2").first().text();
-  return cleanTitle(heading);
+  // CivicPlus wraps each category in div.listing#catN with its <h2>; the inner
+  // div#category-panel-N also starts with "cat", so match the listing class first.
+  const listing = $(el).closest("div.listing");
+  const scope = listing.length ? listing : $(el).closest("section");
+  return cleanTitle(scope.find("h2").first().text());
 }
 
 function cleanTitle(s: string): string {

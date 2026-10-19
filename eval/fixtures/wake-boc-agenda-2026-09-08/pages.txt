@@ -1,0 +1,322 @@
+--- page 1 ---
+Board of Commissioners — Regular Meeting, 2026-09-08 (agenda; one page per agenda item, from the Legistar API)
+Source: https://wake.legistar.com/MeetingDetail.aspx?LEGID=6243&GID=605&G=53B536B7-DAB7-4DC0-9617-B0772D508F49
+
+Agenda item: (section heading)
+Title: Meeting Called to Order: Chair Don Mial
+
+--- page 2 ---
+Agenda item: (section heading)
+Title: Pledge of Allegiance
+
+--- page 3 ---
+Agenda item: (section heading)
+Title: Invocation: Chair Don Mial
+
+--- page 4 ---
+Agenda item: (section heading)
+Title: Items of Business
+
+--- page 5 ---
+Agenda item: 1.
+File number: 16-7339
+Type: Items of Business
+Title: Approval of Agenda
+Matter name: Board of Commissioners
+
+--- page 6 ---
+Agenda item: 2.
+File number: 16-7354
+Type: Other Business
+Title: Approval of the Minutes of the Regular Meeting of October 20, 2025
+Matter name: Board of Commissioners
+
+--- page 7 ---
+Agenda item: 3.
+File number: 16-7316
+Type: Items of Business
+Title: Suicide Prevention Awareness Month Proclamation
+Matter name: Board of Commissioners
+
+--- page 8 ---
+Agenda item: 4.
+File number: 16-7323
+Type: Items of Business
+Title: First Responders Day Proclamation
+Matter name: Chair Don Mial
+
+--- page 9 ---
+Agenda item: 5.
+File number: 16-7355
+Type: Items of Business
+Title: Employee Appreciation Month Proclamation
+Matter name: Chair Don Mial
+
+--- page 10 ---
+Agenda item: (section heading)
+Title: Consent Agenda
+
+--- page 11 ---
+Agenda item: 6.
+File number: 16-7337
+Type: Consent Item
+Title: Accept and Appropriate Additional Juvenile Crime Prevention Council Funding for Fiscal Year 2027
+Matter name: Jonathan Glenn, JCPC Program Manager
+
+--- page 12 ---
+Agenda item: 7.
+File number: 16-7317
+Type: Consent Item
+Title: Accept and Appropriate Additional Funding for Ryan White Part B Oral Health Care Services
+Matter name: Sara Gisler, Deputy Director of Public Health – Clinical Operations
+
+--- page 13 ---
+Agenda item: 8.
+File number: 16-7315
+Type: Consent Item
+Title: Accept and Appropriate Supplemental Medicaid Administration Funding for FY2027
+Matter name: Kathryn Thompson, Medicaid Assistant Division Director
+
+--- page 14 ---
+Agenda item: 9.
+File number: 16-7322
+Type: Consent Item
+Title: Accept and Appropriate Awarded Funding for Community Care of North Carolina for the Wake County Public Health Child Health Program
+Matter name: Sara Gisler, Deputy Director of Public Health – Clinical Operations
+
+--- page 15 ---
+Agenda item: 10.
+File number: 16-7272
+Type: Consent Item
+Title: FY2027 Summer Capital and Grants Project Closures and Realignment
+Matter name: Michelle Venditto, Budget and Management Services
+
+--- page 16 ---
+Agenda item: 11.
+File number: 16-7313
+Type: Consent Item
+Title: FY2027 Wake Transit General Operating and Capital Agreements for GoWake Access
+Matter name: Anita Davis, Medicaid Transportation Manager
+
+--- page 17 ---
+Agenda item: 12.
+File number: 16-7312
+Type: Consent Item
+Title: FFY2025 FTA 5307 Federal Transit Administration (FTA) 5307 Agreement
+Matter name: Anita Davis, Medicaid Transportation Manager
+
+--- page 18 ---
+Agenda item: 13.
+File number: 16-7328
+Type: Consent Item
+Title: Memorandum of Understanding with Duke Energy Supporting the Harris Nuclear Power Plant
+Matter name: Josh Creighton, Deputy Director
+
+--- page 19 ---
+Agenda item: 14.
+File number: 16-7321
+Type: Consent Item
+Title: Proposal to Exchange Property in the Little River Open Space Area Pursuant to G.S. 153A-176 and G.S. 160A-274
+Matter name: Chris Snow, Director of Parks Recreation and Open Space
+
+--- page 20 ---
+Agenda item: 15.
+File number: 16-7331
+Type: Consent Item
+Title: Approve Funding for an Agricultural Conservation Easement on the Dean Farm near Wendell
+Matter name: Loren Hendrickson, Farmland Preservation Manager
+
+--- page 21 ---
+Agenda item: 16.
+File number: 16-7330
+Type: Consent Item
+Title: Easement Dedication and Development Approvals for Sandy Plains Public Safety Station
+Matter name: Tommy Moorman, Sr. Project Manager, Facilities Design & Construction
+
+--- page 22 ---
+Agenda item: 17.
+File number: 16-7320
+Type: Consent Item
+Title: Conveyance of Easements to Duke Energy Progress, LLC at 727 N Rogers Lane for the Kellam-Wyatt County Park
+Matter name: Ricky Campbell, Senior Real Estate Specialist
+
+--- page 23 ---
+Agenda item: 18.
+File number: 16-7324
+Type: Consent Item
+Title: Award Construction Contract for Law Enforcement Training Center Chiller and Domestic Hot Water System Replacement project
+Matter name: Maged Sedarous, Project Manger
+
+--- page 24 ---
+Agenda item: 19.
+File number: 16-7325
+Type: Consent Item
+Title: Award Construction Contract for Northern Regional Center Chiller Replacement Project
+Matter name: Maged Sedarous, Project Manager
+
+--- page 25 ---
+Agenda item: 20.
+File number: 16-7332
+Type: Consent Item
+Title: Affordable Housing Loan Extension for Carlton Place Apartments at 450 East Davie Street in Raleigh, NC
+Matter name: Sarah Kirk, EHCD Division Director
+
+--- page 26 ---
+Agenda item: 21.
+File number: 16-7333
+Type: Consent Item
+Title: Affordable Housing Loan Lien Position Change for Fisher Grove in Raleigh, NC
+Matter name: Sarah Kirk, EHCD Director
+
+--- page 27 ---
+Agenda item: 22.
+File number: 16-7291
+Type: Consent Item
+Title: Adoption of Wake County Sponsorships Policy
+Matter name: Emerson Barker - Community Services Business Manager
+
+--- page 28 ---
+Agenda item: 23.
+File number: 16-7327
+Type: Consent Item
+Title: Approval of Sponsorship Agreement with Carolina Hurricanes
+Matter name: Emerson Barker, Community Services Business Manager
+
+--- page 29 ---
+Agenda item: 24.
+File number: 16-7334
+Type: Consent Item
+Title: Multi-Year Contracts for Health Plan Administration, Medicare Advantage, Dental Plan Administration, and Vision Benefits
+Matter name: Sean Womack, Chief Human Resources Officer
+
+--- page 30 ---
+Agenda item: 25.
+File number: 16-7335
+Type: Consent Item
+Title: 2027 Employee Health and Dental Plans and Rates
+Matter name: Sean Womack, Chief Human Resources Officer
+
+--- page 31 ---
+Agenda item: 26.
+File number: 16-7319
+Type: Consent Item
+Title: Resolution Limiting the Taxation Amount in the Wake County Fire Tax District
+Matter name: Darrell Alford, Fire and Emergency Management Director
+
+--- page 32 ---
+Agenda item: 27.
+File number: 16-7326
+Type: Consent Item
+Title: Tax Committee Recommendations for Gross Receipts Penalty, Refund Requests and Various Reports
+Matter name: Marcus Kinrade, Tax Administrator
+
+--- page 33 ---
+Agenda item: (section heading)
+Title: General Public Comments
+
+--- page 34 ---
+Agenda item: 28.
+File number: 16-7340
+Type: Regular Item
+Title: General Public Comments
+
+--- page 35 ---
+Agenda item: (section heading)
+Title: Regular Agenda
+
+--- page 36 ---
+Agenda item: 29.
+File number: 16-7314
+Type: Regular Item
+Title: Public Hearing for the FY 2028 NCDOT Community Transportation Program Unified Grant Application
+Matter name: Anita Davis, Medicaid Transportation Manager
+
+--- page 37 ---
+Agenda item: 30.
+File number: 16-7343
+Type: Regular Item
+Title: Public Hearing to Consider Rezoning 10.42 Acres Located on Windy Knoll Road
+Matter name: Adam Cook, Planner II
+
+--- page 38 ---
+Agenda item: (section heading)
+Title: Manager's Report
+
+--- page 39 ---
+Agenda item: 31.
+File number: 16-7357
+Type: Regular Item
+Title: Emergency Preparedness and Hurricane Season
+Matter name: Darrell Alford, Fire and Emergency Management Director
+
+--- page 40 ---
+Agenda item: 32.
+File number: 16-7358
+Type: Regular Item
+Title: Remarks from the County Manager
+Matter name: David Ellis, County Manager
+
+--- page 41 ---
+Agenda item: (section heading)
+Title: Appointments
+
+--- page 42 ---
+Agenda item: 33.
+File number: 16-7344
+Type: Appointment
+Title: Adult Care Home Community Advisory Committee
+Matter name: Vice Chair Safiyah Jackson
+
+--- page 43 ---
+Agenda item: 34.
+File number: 16-7345
+Type: Appointment
+Title: Capital Area Workforce Development
+Matter name: Vice Chair Safiyah Jackson
+
+--- page 44 ---
+Agenda item: 35.
+File number: 16-7349
+Type: Appointment
+Title: Holly Springs Planning Board
+Matter name: Vice Chair Safiyah Jackson
+
+--- page 45 ---
+Agenda item: 36.
+File number: 16-7348
+Type: Appointment
+Title: Water Partnership
+Matter name: Vice Chair Safiyah Jackson
+
+--- page 46 ---
+Agenda item: 37.
+File number: 16-7350
+Type: Appointment
+Title: Upcoming Vacancies for October 2026
+Matter name: Vice Chair Safiyah Jackson
+
+--- page 47 ---
+Agenda item: (section heading)
+Title: Other Business
+
+--- page 48 ---
+Agenda item: 38.
+File number: 16-7342
+Type: Other Business
+Title: Reports from Advisory and Regional Boards
+Matter name: Board of Commissioners
+
+--- page 49 ---
+Agenda item: 39.
+File number: 16-7341
+Type: Other Business
+Title: Other Reports from Commissioners
+Matter name: Board of Commissioners
+
+--- page 50 ---
+Agenda item: (section heading)
+Title: Closed Session
+
+--- page 51 ---
+Agenda item: (section heading)
+Title: Adjourn

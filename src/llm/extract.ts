@@ -28,7 +28,8 @@ export interface DocMeta {
 
 export interface ExtractInput {
   meta: DocMeta;
-  pdf: Buffer;
+  /** Original PDF, or null for documents built from structured sources (no scanned pages). */
+  pdf: Buffer | null;
   pages: PdfPage[];
 }
 
@@ -205,9 +206,10 @@ async function extractionRequest(
   cfg: LlmConfig,
   escalate = false,
 ): Promise<LlmRequest> {
-  const attachments = await Promise.all(
-    chunk.imagePages.map(async (page) => ({ title: `page ${page}`, pdf: await slicePdf(input.pdf, [page]) })),
-  );
+  const pdf = input.pdf;
+  const attachments = pdf
+    ? await Promise.all(chunk.imagePages.map(async (page) => ({ title: `page ${page}`, pdf: await slicePdf(pdf, [page]) })))
+    : [];
   return {
     id,
     model,

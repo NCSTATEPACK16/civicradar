@@ -1,4 +1,5 @@
 import type { PoliteFetcher } from "../http/politeFetch.js";
+import type { PdfPage } from "../pdf/text.js";
 
 export type DocumentType = "agenda" | "packet" | "minutes" | "action_agenda";
 
@@ -33,9 +34,20 @@ export interface Doc {
   title?: string;
 }
 
+/** A document's page text, plus the original PDF when there is one (needed to attach scanned pages). */
+export interface LoadedDocument {
+  pages: PdfPage[];
+  pdf: Buffer | null;
+}
+
 export interface Adapter {
   listMeetings(since: Date): Promise<Meeting[]>;
   listDocuments(meeting: Meeting): Promise<Doc[]>;
+  /**
+   * Optional: build the document from a structured source (e.g. an API) instead of
+   * downloading doc.url as a PDF. Adapters without it get the default PDF path.
+   */
+  loadDocument?(doc: Doc, meeting: Meeting): Promise<LoadedDocument>;
 }
 
 export type AdapterFactory = (j: Jurisdiction, http: PoliteFetcher) => Adapter;

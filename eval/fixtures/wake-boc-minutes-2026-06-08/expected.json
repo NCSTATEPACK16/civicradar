@@ -1,0 +1,25 @@
+{
+  "reviewed": false,
+  "labeler": "claude-draft",
+  "notes": "Work session (Special Called Meeting) built from the Legistar API: presentations only, no motions or votes. On item 3 commissioners stated site preferences (5-2 for Well Fed Garden) and the item was sent to the June 15 regular agenda; that is NOT a recorded vote, so approval_status must be 'unknown'. An 'approved' prediction here is an approval false positive.",
+  "items": [
+    {
+      "item_number": "2",
+      "title": "Nomaco Park Improvements Update (former Five County Stadium site)",
+      "approval_status": "unknown",
+      "source_pages": [
+        3
+      ],
+      "action_type": "Infrastructure"
+    },
+    {
+      "item_number": "3",
+      "title": "Athens Drive Library Site Options (Well Fed Garden vs. Tryon Road)",
+      "approval_status": "unknown",
+      "source_pages": [
+        4
+      ],
+      "action_type": "Infrastructure"
+    }
+  ]
+}

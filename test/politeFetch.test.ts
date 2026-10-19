@@ -2,7 +2,7 @@ import { mkdtemp } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { describe, expect, it } from "vitest";
-import { PoliteFetcher, RobotsDisallowedError } from "../src/http/politeFetch.js";
+import { PoliteFetcher, RobotsDisallowedError, UnexpectedContentError } from "../src/http/politeFetch.js";
 
 function fakeFetch(handler: (url: string, headers: Record<string, string>) => Response) {
   const calls: { url: string; at: number; headers: Record<string, string> }[] = [];
@@ -48,5 +48,29 @@ describe("PoliteFetcher", () => {
     );
     const f = new PoliteFetcher({ cacheDir: await mkdtemp(join(tmpdir(), "cr-")), minIntervalMs: 0, fetchImpl: impl });
     await expect(f.get("https://h.test/private/doc")).rejects.toBeInstanceOf(RobotsDisallowedError);
+  });
+
+  it("retries once when a PDF was expected but HTML came back, and never caches the HTML", async () => {
+    let n = 0;
+    const { impl } = fakeFetch((url) => {
+      if (url.endsWith("/robots.txt")) return new Response("", { status: 404 });
+      n++;
+      return n === 1 ? new Response("<html>404</html>", { status: 404 }) : new Response("%PDF-1.7 body");
+    });
+    const f = new PoliteFetcher({ cacheDir: await mkdtemp(join(tmpdir(), "cr-")), minIntervalMs: 0, fetchImpl: impl, pdfRetryDelayMs: 0 });
+    const r = await f.get("https://h.test/doc.pdf", { expect: "pdf" });
+    expect(r.body.toString()).toBe("%PDF-1.7 body");
+    expect(n).toBe(2);
+  });
+
+  it("fails clearly when a 200 response is an HTML page instead of a PDF", async () => {
+    const { impl } = fakeFetch((url) =>
+      url.endsWith("/robots.txt") ? new Response("", { status: 404 }) : new Response("<html>Agenda Center</html>", { headers: { "content-type": "text/html" } }),
+    );
+    const dir = await mkdtemp(join(tmpdir(), "cr-"));
+    const f = new PoliteFetcher({ cacheDir: dir, minIntervalMs: 0, fetchImpl: impl, pdfRetryDelayMs: 0 });
+    await expect(f.get("https://h.test/minutes", { expect: "pdf" })).rejects.toBeInstanceOf(UnexpectedContentError);
+    const { readdir } = await import("node:fs/promises");
+    expect(await readdir(dir).catch(() => [])).toEqual([]);
   });
 });

@@ -1,0 +1,322 @@
+{
+  "reviewed": false,
+  "labeler": "claude-draft",
+  "notes": "Built from the Legistar API (one page per item). Consent items (pages 11-29) were approved by the Consent Agenda motion, which is copied onto each item's page with the roll-call vote. 26-28 have their own passed motions. 29 was a public hearing with no vote. Appointments show no recorded action in the API, so they are optional and 'unknown'. Skipped: agenda/minutes approval, recognitions, proclamation, public comment, reports.",
+  "items": [
+    {
+      "item_number": "6",
+      "title": "Accept and Appropriate Additional Funding from Cooperative Extension 4-H Camp Fees",
+      "approval_status": "approved",
+      "source_pages": [
+        11
+      ],
+      "action_type": "Budget"
+    },
+    {
+      "item_number": "7",
+      "title": "Accept and Appropriate Additional Funding for Region 7 Tobacco Prevention and Control",
+      "approval_status": "approved",
+      "source_pages": [
+        12
+      ],
+      "action_type": "Budget"
+    },
+    {
+      "item_number": "8",
+      "title": "Appropriate Grant Funds for the Continuum of Care",
+      "approval_status": "approved",
+      "source_pages": [
+        13
+      ],
+      "action_type": "Budget"
+    },
+    {
+      "item_number": "9",
+      "title": "Uncommit and Appropriate McKinsey & Co Opioid Settlement Funds",
+      "approval_status": "approved",
+      "source_pages": [
+        14
+      ],
+      "action_type": "Budget"
+    },
+    {
+      "item_number": "10",
+      "title": "Approve Amended Spending Resolution and Adopt a Settlement Project Ordinance",
+      "approval_status": "approved",
+      "source_pages": [
+        15
+      ],
+      "action_type": "Budget"
+    },
+    {
+      "item_number": "11",
+      "title": "Approve Agreement with State of North Carolina for Protection of Forest Land in Wake County",
+      "approval_status": "approved",
+      "source_pages": [
+        16
+      ],
+      "action_type": "Other",
+      "optional": true
+    },
+    {
+      "item_number": "12",
+      "title": "Two-Year Contract with Off Duty Management Scheduling Software",
+      "approval_status": "approved",
+      "source_pages": [
+        17
+      ],
+      "action_type": "Other",
+      "optional": true
+    },
+    {
+      "item_number": "13",
+      "title": "Three-Year Subscription Agreement with Unily Inc.",
+      "approval_status": "approved",
+      "source_pages": [
+        18
+      ],
+      "action_type": "Other",
+      "optional": true
+    },
+    {
+      "item_number": "14",
+      "title": "Award Construction Contract ($1,548,850) for the North Wake Household Hazardous Waste facility",
+      "approval_status": "approved",
+      "source_pages": [
+        19
+      ],
+      "action_type": "Infrastructure"
+    },
+    {
+      "item_number": "15",
+      "title": "Conveyance of Easements to the City of Raleigh at Crabtree Creek Flood Control Structure Site #13 Shelly Lake",
+      "approval_status": "approved",
+      "source_pages": [
+        20
+      ],
+      "action_type": "Infrastructure"
+    },
+    {
+      "item_number": "16",
+      "title": "Conveyance of Easements to the City of Raleigh on County Owned Property at 401 Capital Boulevard",
+      "approval_status": "approved",
+      "source_pages": [
+        21
+      ],
+      "action_type": "Infrastructure",
+      "addresses": [
+        "401 Capital Boulevard"
+      ]
+    },
+    {
+      "item_number": "17",
+      "title": "Acquisition of Easements for Sanitary Sewer Extension to Ponderosa Subdivision",
+      "approval_status": "approved",
+      "source_pages": [
+        22
+      ],
+      "action_type": "Infrastructure"
+    },
+    {
+      "item_number": "18",
+      "title": "Memorandum of Understanding with the Town of Cary for Funding of Concrete Improvements",
+      "approval_status": "approved",
+      "source_pages": [
+        23
+      ]
+    },
+    {
+      "item_number": "19",
+      "title": "FY2027 WCPSS CIP Appropriations and Reallocations",
+      "approval_status": "approved",
+      "source_pages": [
+        24
+      ],
+      "action_type": "Budget"
+    },
+    {
+      "item_number": "20",
+      "title": "Wake Technical Community College Capital Improvement Program FY 2027 Plan Appropriations",
+      "approval_status": "approved",
+      "source_pages": [
+        25
+      ],
+      "action_type": "Budget"
+    },
+    {
+      "item_number": "21",
+      "title": "WCPSS 2025-26 NC DPI Facility Needs Survey",
+      "approval_status": "approved",
+      "source_pages": [
+        26
+      ],
+      "action_type": "Other",
+      "optional": true
+    },
+    {
+      "item_number": "22",
+      "title": "Special Emergency Exception to G.S. 143-129 for Construction Bidding at the North Wake Landfill for Emergency Road Repairs",
+      "approval_status": "approved",
+      "source_pages": [
+        27
+      ],
+      "action_type": "Infrastructure"
+    },
+    {
+      "item_number": "23",
+      "title": "Settlement of 2025-2026 Property Tax Collections and Charge of 2026-2027 Taxes",
+      "approval_status": "approved",
+      "source_pages": [
+        28
+      ],
+      "action_type": "Budget"
+    },
+    {
+      "item_number": "24",
+      "title": "Tax Committee Recommendations for Gross Receipts Penalty, Refund Requests and Various Reports",
+      "approval_status": "approved",
+      "source_pages": [
+        29
+      ],
+      "action_type": "Budget"
+    },
+    {
+      "item_number": "26",
+      "title": "Public Hearing and Resolution Confirming Assessment Roll for Preserve at Long Branch Farms Road Improvements",
+      "approval_status": "approved",
+      "source_pages": [
+        33
+      ],
+      "action_type": "Infrastructure"
+    },
+    {
+      "item_number": "27",
+      "title": "Amendment Approval of the Affordable Housing HOME-ARP Allocation Plan",
+      "approval_status": "approved",
+      "source_pages": [
+        34
+      ],
+      "action_type": "Budget"
+    },
+    {
+      "item_number": "28",
+      "title": "Business Development Grant Policy Updates",
+      "approval_status": "approved",
+      "source_pages": [
+        35
+      ],
+      "action_type": "Other",
+      "optional": true
+    },
+    {
+      "item_number": "29",
+      "title": "Public Hearing on Potential Amendments to WakeMed's Articles of Incorporation and Transfer Agreement",
+      "approval_status": "unknown",
+      "source_pages": [
+        36
+      ],
+      "action_type": "Other",
+      "optional": true
+    },
+    {
+      "item_number": "30",
+      "title": "Appointment: Board of Adjustment",
+      "approval_status": "unknown",
+      "source_pages": [
+        38
+      ],
+      "action_type": "Other",
+      "optional": true
+    },
+    {
+      "item_number": "31",
+      "title": "Appointment: Capital Area Workforce Development",
+      "approval_status": "unknown",
+      "source_pages": [
+        39
+      ],
+      "action_type": "Other",
+      "optional": true
+    },
+    {
+      "item_number": "32",
+      "title": "Appointment: Energy Advisory Commission",
+      "approval_status": "unknown",
+      "source_pages": [
+        40
+      ],
+      "action_type": "Other",
+      "optional": true
+    },
+    {
+      "item_number": "33",
+      "title": "Appointment: Fire Commission",
+      "approval_status": "unknown",
+      "source_pages": [
+        41
+      ],
+      "action_type": "Other",
+      "optional": true
+    },
+    {
+      "item_number": "34",
+      "title": "Appointment: Historic Preservation Commission",
+      "approval_status": "unknown",
+      "source_pages": [
+        42
+      ],
+      "action_type": "Other",
+      "optional": true
+    },
+    {
+      "item_number": "35",
+      "title": "Appointment: Industrial Facilities and Pollution Control Financing Authority",
+      "approval_status": "unknown",
+      "source_pages": [
+        43
+      ],
+      "action_type": "Other",
+      "optional": true
+    },
+    {
+      "item_number": "36",
+      "title": "Appointment: Juvenile Crime Prevention Council",
+      "approval_status": "unknown",
+      "source_pages": [
+        44
+      ],
+      "action_type": "Other",
+      "optional": true
+    },
+    {
+      "item_number": "37",
+      "title": "Appointment: Library Commission",
+      "approval_status": "unknown",
+      "source_pages": [
+        45
+      ],
+      "action_type": "Other",
+      "optional": true
+    },
+    {
+      "item_number": "38",
+      "title": "Appointment: Open Space and Parks Advisory Committee",
+      "approval_status": "unknown",
+      "source_pages": [
+        46
+      ],
+      "action_type": "Other",
+      "optional": true
+    },
+    {
+      "item_number": "40",
+      "title": "Appointment: Water Partnership",
+      "approval_status": "unknown",
+      "source_pages": [
+        47
+      ],
+      "action_type": "Other",
+      "optional": true
+    }
+  ]
+}

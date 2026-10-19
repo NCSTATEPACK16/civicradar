@@ -1,0 +1,173 @@
+--- page 1 ---
+Board of Commissioners — Regular Meeting, 2026-10-19 (agenda; one page per agenda item, from the Legistar API)
+Source: https://wake.legistar.com/MeetingDetail.aspx?LEGID=6254&GID=605&G=53B536B7-DAB7-4DC0-9617-B0772D508F49
+
+Agenda item: (section heading)
+Title: Meeting Called to Order: Chair Don Mial
+
+--- page 2 ---
+Agenda item: (section heading)
+Title: Pledge of Allegiance
+
+--- page 3 ---
+Agenda item: (section heading)
+Title: Invocation: Commissioner Tara Waters
+
+--- page 4 ---
+Agenda item: (section heading)
+Title: Items of Business
+
+--- page 5 ---
+Agenda item: 1.
+File number: 16-7428
+Type: Items of Business
+Title: Approval of Agenda
+
+--- page 6 ---
+Agenda item: 2.
+File number: 16-7451
+Type: Items of Business
+Title: Recognition of Awards
+Matter name: Board of Commissioners
+
+--- page 7 ---
+Agenda item: 3.
+File number: 16-7407
+Type: Items of Business
+Title: Breast Cancer Awareness Month Proclamation
+Matter name: Board of Commissioners
+
+--- page 8 ---
+Agenda item: 4.
+File number: 16-7440
+Type: Items of Business
+Title: Domestic Violence Awareness Month Proclamation
+Matter name: Board of Commissioners
+
+--- page 9 ---
+Agenda item: 5.
+File number: 16-7434
+Type: Regular Item
+Title: Retiree Recognition
+Matter name: David Ellis, County Manager
+
+--- page 10 ---
+Agenda item: (section heading)
+Title: Consent Agenda
+
+--- page 11 ---
+Agenda item: 6.
+File number: 16-7422
+Type: Consent Item
+Title: Award Construction Contract for Facility Condition Assessment (FCA) Upgrades to Existing Stations Project
+Matter name: Kelsey Graff, Facilities, Design & Construction Project Manager
+
+--- page 12 ---
+Agenda item: 7.
+File number: 16-7421
+Type: Consent Item
+Title: Award Construction Contract for Mini City EMS Station Replacement Project on Hargrove Road in Raleigh, NC
+Matter name: Kelsey Graff, Facilities Design & Construction Project Manager
+
+--- page 13 ---
+Agenda item: 8.
+File number: 16-7409
+Type: Consent Item
+Title: Memorandum of Understanding with Wake Technical Community College for Fire and Emergency Services Training
+Matter name: Joe Vindigni, Deputy Director
+
+--- page 14 ---
+Agenda item: 9.
+File number: 16-7425
+Type: Consent Item
+Title: Second Round 2026 Affordable Housing Development Program (AHDP) Affordable Multifamily Development Loans
+Matter name: Sarah Kirk, Equitable Housing & Community Development Division Director
+
+--- page 15 ---
+Agenda item: 10.
+File number: 16-7387
+Type: Consent Item
+Title: Accept and Appropriate $689,500.08 from the North Carolina State Bureau of Investigation for the Local Law Enforcement Bonus Program
+Matter name: Patrick Flanary, CFO
+
+--- page 16 ---
+Agenda item: 11.
+File number: 16-7424
+Type: Consent Item
+Title: Technical Corrections to the Business Development Grant Policy
+Matter name: Michael James, Assistant County Manager
+
+--- page 17 ---
+Agenda item: 12.
+File number: 16-7429
+Type: Consent Item
+Title: Amendments to the Paid Parental Leave Benefit
+Matter name: Sean Womack, Chief Human Resources Officer
+
+--- page 18 ---
+Agenda item: 13.
+File number: 16-7423
+Type: Consent Item
+Title: Adoption of the Schedules, Standards and Rules to be used in Conducting the 2027 County-wide Real Property Revaluation
+Matter name: Marcus Kinrade, Tax Administrator
+
+--- page 19 ---
+Agenda item: (section heading)
+Title: General Public Comments
+
+--- page 20 ---
+Agenda item: 14.
+File number: 16-7430
+Type: Regular Item
+Title: General Public Comments
+
+--- page 21 ---
+Agenda item: (section heading)
+Title: Regular Agenda
+
+--- page 22 ---
+Agenda item: 15.
+File number: 16-7371
+Type: Regular Item
+Title: Public Hearing on the Proposed Comprehensive Plan Amendment 01-26 to Adopt the Neuse North Area Plan
+Matter name: Akul Nishawala, Planner III
+
+--- page 23 ---
+Agenda item: 16.
+File number: 16-7427
+Type: Regular Item
+Title: Memorandum of Understanding with Wake County Public School System for Land Exchange for Affordable Housing
+Matter name: Mark Perlman, Housing Deputy Director
+
+--- page 24 ---
+Agenda item: 17.
+File number: 16-7426
+Type: Regular Item
+Title: Approve Funding for an Agricultural Conservation Easement on the Tredway Farm Near Zebulon
+Matter name: Loren Hendrickson, Farmland Preservation Manager
+
+--- page 25 ---
+Agenda item: (section heading)
+Title: Other Business
+
+--- page 26 ---
+Agenda item: 18.
+File number: 16-7431
+Type: Other Business
+Title: Reports from Advisory and Regional Boards
+Matter name: Board of Commissioners
+
+--- page 27 ---
+Agenda item: 19.
+File number: 16-7432
+Type: Other Business
+Title: Other Reports from Commissioners
+Matter name: Board of Commissioners
+
+--- page 28 ---
+Agenda item: (section heading)
+Title: Closed Session
+
+--- page 29 ---
+Agenda item: (section heading)
+Title: Adjourn

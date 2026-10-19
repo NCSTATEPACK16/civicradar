@@ -4,7 +4,7 @@ import { join } from "node:path";
 import { parseArgs } from "node:util";
 import { loadLlmConfig } from "../src/config.js";
 import { createProvider, extract, type DocMeta, type ExtractInput } from "../src/llm/index.js";
-import { extractPages } from "../src/pdf/text.js";
+import { extractPages, type PdfPage } from "../src/pdf/text.js";
 import { appendUsage } from "../src/usage/log.js";
 import { scoreDocument, type DocScore, type ExpectedItem } from "./score.js";
 
@@ -32,8 +32,13 @@ const expected: { reviewed: boolean; items: ExpectedItem[] }[] = [];
 for (const id of ids) {
   const dir = join(ROOT, id);
   const meta = JSON.parse(readFileSync(join(dir, "meta.json"), "utf8")) as DocMeta;
-  const pdf = readFileSync(join(dir, "source.pdf"));
-  inputs.push({ meta: { ...meta, docId: `eval:${id}` }, pdf, pages: await extractPages(pdf, cfg.imageOnlyCharThreshold) });
+  // PDF sources are re-extracted so text extraction is part of what's evaluated; API sources ship pages.json.
+  const pdfPath = join(dir, "source.pdf");
+  const pdf = existsSync(pdfPath) ? readFileSync(pdfPath) : null;
+  const pages = pdf
+    ? await extractPages(pdf, cfg.imageOnlyCharThreshold)
+    : (JSON.parse(readFileSync(join(dir, "pages.json"), "utf8")) as PdfPage[]);
+  inputs.push({ meta: { ...meta, docId: `eval:${id}` }, pdf, pages });
   expected.push(JSON.parse(readFileSync(join(dir, "expected.json"), "utf8")));
 }
 

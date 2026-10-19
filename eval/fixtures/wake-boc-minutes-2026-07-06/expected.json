@@ -1,0 +1,220 @@
+{
+  "reviewed": false,
+  "labeler": "claude-draft",
+  "notes": "Built from the Legistar API. Consent items 6-18 were approved by the Consent Agenda motion (page 11, copied onto each item with the vote). Item 20 has its own passed motion. Appointments were approved together by the motion on the Appointments heading (page 29); they are optional. Skipped: agenda/minutes approval, proclamations (3-5 and consent item 17), public comment, reports, closed session.",
+  "items": [
+    {
+      "item_number": "6",
+      "title": "Accept Funding from NC DHHS for the Dental Health program",
+      "approval_status": "approved",
+      "source_pages": [
+        12
+      ],
+      "action_type": "Budget"
+    },
+    {
+      "item_number": "7",
+      "title": "Accept and Appropriate Intensive Intervention Juvenile Justice Funding for FY2027",
+      "approval_status": "approved",
+      "source_pages": [
+        13
+      ],
+      "action_type": "Budget"
+    },
+    {
+      "item_number": "8",
+      "title": "Accept and Appropriate Reimbursement and Stewardship Funding for TLC Williamson Triangle Farm",
+      "approval_status": "approved",
+      "source_pages": [
+        14
+      ],
+      "action_type": "Budget"
+    },
+    {
+      "item_number": "9",
+      "title": "Three-Year Agreement with SHI International Corp. for Microsoft Licensing",
+      "approval_status": "approved",
+      "source_pages": [
+        15
+      ],
+      "action_type": "Other",
+      "optional": true
+    },
+    {
+      "item_number": "10",
+      "title": "Approval of FY 2027 Funding Agreement with Alliance Health for Behavioral Health Services",
+      "approval_status": "approved",
+      "source_pages": [
+        16
+      ]
+    },
+    {
+      "item_number": "11",
+      "title": "Award Construction Contract for Public Safety Center Dry-Pipe Sprinkler Replacement Project",
+      "approval_status": "approved",
+      "source_pages": [
+        17
+      ],
+      "action_type": "Infrastructure"
+    },
+    {
+      "item_number": "12",
+      "title": "Lease Assumption Agreement for 5651 Dillard Drive with the Wake County Board of Education and Chaucer Investments",
+      "approval_status": "approved",
+      "source_pages": [
+        18
+      ],
+      "addresses": [
+        "5651 Dillard Drive"
+      ]
+    },
+    {
+      "item_number": "13",
+      "title": "MOU between the Wake County Board of Elections and the County of Wake",
+      "approval_status": "approved",
+      "source_pages": [
+        19
+      ],
+      "action_type": "Other",
+      "optional": true
+    },
+    {
+      "item_number": "14",
+      "title": "Wake County's Records Management Program Update",
+      "approval_status": "approved",
+      "source_pages": [
+        20
+      ],
+      "action_type": "Other",
+      "optional": true
+    },
+    {
+      "item_number": "15",
+      "title": "Updates to the Board of Commissioners' Rules of Procedure and Appointments Policy",
+      "approval_status": "approved",
+      "source_pages": [
+        21
+      ],
+      "action_type": "Other",
+      "optional": true
+    },
+    {
+      "item_number": "16",
+      "title": "Amend the 2026 Board of Commissioners Meeting Schedule",
+      "approval_status": "approved",
+      "source_pages": [
+        22
+      ],
+      "action_type": "Other",
+      "optional": true
+    },
+    {
+      "item_number": "18",
+      "title": "Tax Committee Recommendations for Gross Receipts Penalty, Refund Requests and Various Reports",
+      "approval_status": "approved",
+      "source_pages": [
+        24
+      ],
+      "action_type": "Budget"
+    },
+    {
+      "item_number": "20",
+      "title": "Public Hearings on 2026 Bond Referenda for Schools and Wake Tech; adopt Bond Orders and call Nov 3, 2026 referendum",
+      "approval_status": "approved",
+      "source_pages": [
+        28
+      ],
+      "action_type": "Budget"
+    },
+    {
+      "item_number": "21",
+      "title": "Appointment: Adult Care Home Community Advisory Committee",
+      "approval_status": "approved",
+      "source_pages": [
+        30
+      ],
+      "action_type": "Other",
+      "optional": true
+    },
+    {
+      "item_number": "22",
+      "title": "Appointment: Alcoholic Beverage Control Board",
+      "approval_status": "approved",
+      "source_pages": [
+        31
+      ],
+      "action_type": "Other",
+      "optional": true
+    },
+    {
+      "item_number": "23",
+      "title": "Appointment: Capital Area Workforce Development",
+      "approval_status": "approved",
+      "source_pages": [
+        32
+      ],
+      "action_type": "Other",
+      "optional": true
+    },
+    {
+      "item_number": "24",
+      "title": "Appointment: Energy Advisory Commission",
+      "approval_status": "approved",
+      "source_pages": [
+        33
+      ],
+      "action_type": "Other",
+      "optional": true
+    },
+    {
+      "item_number": "25",
+      "title": "Appointment: Fire Commission",
+      "approval_status": "approved",
+      "source_pages": [
+        34
+      ],
+      "action_type": "Other",
+      "optional": true
+    },
+    {
+      "item_number": "26",
+      "title": "Appointment: Library Commission",
+      "approval_status": "approved",
+      "source_pages": [
+        35
+      ],
+      "action_type": "Other",
+      "optional": true
+    },
+    {
+      "item_number": "27",
+      "title": "Appointment: Open Space and Parks Advisory Committee",
+      "approval_status": "approved",
+      "source_pages": [
+        36
+      ],
+      "action_type": "Other",
+      "optional": true
+    },
+    {
+      "item_number": "28",
+      "title": "Appointment: United Arts Grants Panel",
+      "approval_status": "approved",
+      "source_pages": [
+        37
+      ],
+      "action_type": "Other",
+      "optional": true
+    },
+    {
+      "item_number": "29",
+      "title": "Appointment: Water Partnership",
+      "approval_status": "approved",
+      "source_pages": [
+        38
+      ],
+      "action_type": "Other",
+      "optional": true
+    }
+  ]
+}

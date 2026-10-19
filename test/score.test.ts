@@ -32,6 +32,21 @@ describe("scoreDocument", () => {
     expect(s.evidence).toEqual({ verbatim: 1, total: 1 });
   });
 
+  it("neither rewards nor penalizes optional items", () => {
+    const expected: ExpectedItem[] = [
+      { title: "Rezoning Zeno Rd", case_number: "RZ-26-04", action_type: "Zoning", approval_status: "scheduled" },
+      { title: "Special event permit movie night", action_type: "Other", approval_status: "scheduled", optional: true },
+      { title: "Meeting schedule for 2027", approval_status: "scheduled", optional: true },
+    ];
+    const s = scoreDocument(
+      expected,
+      [pred({ title: "Rezoning", case_number: "RZ-26-04" }), pred({ title: "Special event permit for movie night", action_type: "Budget" })],
+      "",
+    );
+    expect([s.tp, s.fp, s.fn]).toEqual([1, 0, 0]);
+    expect(s.field.action_type).toEqual({ correct: 1, total: 1 });
+  });
+
   it("computes set F1 on normalized values", () => {
     expect(setF1(["0741-23-4567"], ["0741234567"])).toBe(1);
     expect(setF1(["a", "b"], ["a"])).toBeCloseTo(2 / 3);

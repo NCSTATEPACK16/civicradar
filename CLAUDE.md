@@ -31,6 +31,7 @@ Wake County, NC civic data pipeline. It ingests meeting agendas, packets and min
 ```
 config/jurisdictions.yaml   body → adapter + URLs + options (add towns by config, not code)
 config/llm.yaml             provider, models, thresholds, token limits, pricing
+config/geocode.yaml         geocoder endpoints, Wake bounds, Nominatim rate limit
 docs/BLUEPRINT.md           research / source of truth
 src/http/                   politeFetch: robots.txt, User-Agent, 1 req/s per host, URL cache
 src/adapters/               one adapter per platform: listMeetings(since), listDocuments(meeting)
@@ -39,7 +40,9 @@ src/llm/                    extract() interface + providers + prompt
 src/schema/                 civic_action zod schema (+ exported JSON Schema in schema/)
 src/postprocess/            deterministic guards (approval status, pages, PINs, dedupe)
 src/usage/                  token/cost accounting, data/usage.jsonl
-src/pipeline/               ingest CLI
+src/geo/                    geocoding: parcel PINs → Census → Nominatim
+src/store/                  civic_actions rows + Supabase (PostgREST) upsert
+src/pipeline/               ingest and store CLIs
 eval/fixtures/              10 real documents + hand-checked expected.json
 supabase/migrations/        SQL for review; never auto-applied
 test/                       unit tests on saved fixtures (no network)
@@ -66,6 +69,7 @@ data/                       cache, outputs, usage logs (gitignored)
 ## Commands
 - `npm run typecheck`, `npm test`
 - `npm run ingest -- [--jurisdiction <id>] [--since YYYY-MM-DD] [--batch] [--dry-run]`
+- `npm run store -- [--dry-run] [--no-geocode] [files...]`: geocode `data/out/*.json` and upsert into `civic_actions` (needs `SUPABASE_URL` + `SUPABASE_SERVICE_ROLE_KEY` unless `--dry-run`)
 - `npm run eval`: accuracy + total cost over `eval/fixtures/`
 
 ## Phase 1 scope

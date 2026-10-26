@@ -1,0 +1,24 @@
+# Geocoding (BLUEPRINT §3): parcel PINs first, then the US Census geocoder, then Nominatim.
+# Every request goes through PoliteFetcher (robots.txt, User-Agent, URL cache).
+# NOTE: the endpoints and field names below have not yet been checked against live responses;
+# the dev environment's network policy blocked these hosts (2026-10-26).
+
+# Results outside this box are rejected: [minLng, minLat, maxLng, maxLat] around Wake County.
+bounds: [-79.0, 35.5, -78.25, 36.1]
+# Geocoder responses rarely change; reuse cached answers for this many days without revalidating.
+cacheDays: 30
+
+parcels:
+  # Wake County parcel layer (ArcGIS REST). One query per action, all of its PINs at once.
+  url: https://maps.wakegov.com/arcgis/rest/services/Property/Parcels/MapServer/0/query
+  pinField: PIN_NUM
+
+census:
+  url: https://geocoding.geo.census.gov/geocoder/locations/onelineaddress
+  benchmark: Public_AR_Current
+
+nominatim:
+  enabled: true
+  url: https://nominatim.openstreetmap.org/search
+  # Usage policy: at most 1 req/s, and 4 req/min for scheduled scripts like this one.
+  minIntervalMs: 15000

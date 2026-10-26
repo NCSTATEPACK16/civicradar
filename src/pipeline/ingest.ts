@@ -77,7 +77,20 @@ for (const r of results) {
   await appendUsage(r.usage);
   total += r.costUsd;
   const file = `data/out/${r.meta.docId.replace(/[^a-zA-Z0-9_-]+/g, "_")}.json`;
-  await writeFile(file, JSON.stringify({ meta: r.meta, costUsd: r.costUsd, warnings: r.warnings, actions: r.actions }, null, 2));
+  await writeFile(
+    file,
+    JSON.stringify(
+      {
+        meta: r.meta,
+        models: [...new Set(r.usage.map((u) => u.model))],
+        costUsd: r.costUsd,
+        warnings: r.warnings,
+        actions: r.actions,
+      },
+      null,
+      2,
+    ),
+  );
   console.error(`${r.meta.docId}: ${r.actions.length} actions, $${r.costUsd.toFixed(4)}, ${r.warnings.length} warnings -> ${file}`);
 }
 console.error(`total: ${results.length} documents, $${total.toFixed(4)}`);

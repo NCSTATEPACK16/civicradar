@@ -12,7 +12,8 @@
     "ingest": "tsx src/pipeline/ingest.ts",
     "eval": "tsx eval/run.ts",
     "schema:export": "tsx src/schema/export.ts",
-    "eval:add": "tsx eval/add-fixture.ts"
+    "eval:add": "tsx eval/add-fixture.ts",
+    "store": "tsx src/pipeline/store.ts"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.135.0",

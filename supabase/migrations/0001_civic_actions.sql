@@ -10,8 +10,9 @@ create table if not exists public.civic_actions (
   municipality          text not null,
   body                  text,
   meeting_type          text,                                         -- ADDED (in the JSON schema, missing from blueprint SQL)
-  document_type         text check (document_type in ('agenda','packet','minutes','action_agenda')),
+  document_type         text not null check (document_type in ('agenda','packet','minutes','action_agenda')),
   item_number           text,
+  item_key              text not null,                                -- ADDED: item_number, or 'title:<normalized title>' when unnumbered (set by the loader)
   case_number           text,
   action_type           text check (action_type in ('Zoning','Infrastructure','Budget','Other')),
   title                 text not null,
@@ -30,9 +31,10 @@ create table if not exists public.civic_actions (
   geocode_method        text check (geocode_method in ('pin','census','nominatim','manual')),
   created_at            timestamptz not null default now(),
   updated_at            timestamptz not null default now(),          -- ADDED
-  -- CHANGED: NULLS NOT DISTINCT (Postgres 15+) so items without an item_number
-  -- can't be inserted twice for the same document.
-  constraint civic_actions_source_item_key unique nulls not distinct (source_url, item_number)
+  -- CHANGED: keyed on document_type + item_key instead of (source_url, item_number): unnumbered
+  -- items (e.g. closed-session actions) would collide on a null item_number, and Legistar agenda
+  -- and minutes share the meeting's source_url.
+  constraint civic_actions_source_item_key unique (source_url, document_type, item_key)
 );
 
 create index if not exists civic_actions_geom_idx on public.civic_actions using gist (geom);
